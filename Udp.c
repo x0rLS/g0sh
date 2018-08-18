@@ -33,7 +33,6 @@ int make_socket(char *host, char *port) {
 	}
 	if(p == NULL) {
 		if(servinfo)
-			freeaddrinfo(servinfo);
 		fprintf(stderr, "#TangoDown!!!!!\n");
 		
 	}
