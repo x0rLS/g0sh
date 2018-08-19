@@ -11,7 +11,7 @@ def print_perms(chars, minlen, maxlen):
         for perm in itertools.product("abcdefghijklmnopqrstuvwxyz1234567890", repeat=n): 
         
 
-                return ''.join(perm)
+             
                 
 
 
