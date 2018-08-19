@@ -16,7 +16,7 @@ def print_perms(chars, minlen, maxlen):
 
 
 
-            for symbols in print_perms:
+            for symbols in perm:
 
 
                try:
