@@ -9,7 +9,7 @@ user = input("Enter Target's Gmail Address: ")
 def print_perms(chars, minlen, maxlen): 
     for n in range(minlen, maxlen+1): 
         for perm in itertools.product(chars, repeat=n): 
-            while i<10000:
+            while perm<10000:
 
                 print(''.join(perm)) 
                 
