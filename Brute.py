@@ -14,7 +14,7 @@ def print_perms(chars, minlen, maxlen):
 print_perms("abcdefghijklmnopqrstuvwxyz1234567890", 6, 12)
 
 for symbols in print_perms:
-    while(1):
+    for i in xrange(100000000):
 
        try:
            smtpserver.login(user, password)
