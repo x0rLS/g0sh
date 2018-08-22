@@ -79,7 +79,7 @@ void cycle_identity() {
 	while(1) {
 		r=write(socket, "signal NEWNYM\n\x00", 16);
 		fprintf(stderr, "[%i: cycle_identity -> signal NEWNYM\n", r);
-		usleep(30
+		
 	}
 }
 
