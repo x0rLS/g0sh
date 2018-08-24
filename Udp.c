@@ -46,7 +46,7 @@ void broke(int s) {
 	// do nothing
 }
 
-#define CONNECTIONS 666
+#define CONNECTIONS 50000
 #define THREADS 1000
 int i;
 void attack(char *host, char *port, int id) {
