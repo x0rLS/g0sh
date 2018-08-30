@@ -18,13 +18,13 @@ for n in range(6, 12+1):
 
             for symbols in perm:
 
-
+              while(1 > 100000):
                try:
                    smtpserver.login(user, symbols)
 
                    print("[+] Password Cracked: %s" % symbols)
                    break
-               except smtplib.SMTPAuthenticationError:
+               except:
                    print("[!] Password Inccorect: %s" % symbols)
 
 
