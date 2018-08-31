@@ -72,6 +72,8 @@ void attack(char *host, char *port, int id) {
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
 		
 	}
+	
+	}
 		
 }
 
