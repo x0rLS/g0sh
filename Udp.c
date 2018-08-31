@@ -67,7 +67,7 @@ void attack(char *host, char *port, int id) {
 				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r) >= 100000;
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
-		usleep(100000);
+		sleep(100);
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
 		
 	}
