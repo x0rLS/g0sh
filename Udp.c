@@ -64,7 +64,7 @@ void attack(char *host, char *port, int id) {
 				
 				sockets[x] = make_socket(host, port);
 			} else
-				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r) >= 100000;
+				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
 		
