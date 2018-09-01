@@ -52,7 +52,7 @@ int bytes = 1337133713371337;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
-	for(x=0; bytes < 0; x++)
+	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
 	while(bytes < 0) {
