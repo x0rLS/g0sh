@@ -50,7 +50,7 @@ void broke(int s) {
 
 #define CONNECTIONS 800
 #define THREADS 480
-int bytes = 1337133713371337;
+unsigned long int bytes = 1337133713371337;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
