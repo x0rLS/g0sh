@@ -19,7 +19,7 @@ int make_socket(char *host, char *port) {
 	hints.ai_socktype = SOCK_STREAM;
 	if((r=getaddrinfo(host, port, &hints, &servinfo))!=0) {
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(r));
-		continue;
+		
 		
 	}
 	for(p = servinfo; p != NULL; p = p->ai_next) {
@@ -28,7 +28,7 @@ int make_socket(char *host, char *port) {
 		}
 		if(connect(sock, p->ai_addr, p->ai_addrlen)==-1) {
 			close(sock);
-			continue;
+			
 		}
 		break;
 	}
