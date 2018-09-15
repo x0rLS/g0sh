@@ -19,7 +19,9 @@ while(True) {
 </body>
 </html>");
             }
+        
         }
+    }
     
     if ($str != $incorrect) {
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
@@ -31,7 +33,6 @@ ce attack.</b></div>
     </tr>
 </table>";
     }
-}
 }
 echo "</body>
 </html>";
