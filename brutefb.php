@@ -18,8 +18,7 @@ while(True) {
 </body>
 </html>";
             
-        
-        }
+      
     
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
@@ -30,6 +29,7 @@ ce attack.</b></div>
     </tr>
 </table>";
     
+        }
 }
 echo "</body>
 </html>";
