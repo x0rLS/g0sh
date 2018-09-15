@@ -16,7 +16,7 @@ while(True) {
     </tr>
 </table>
 </body>
-</html>" {exit(-1)};
+</html>";
             
         
         }
