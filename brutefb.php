@@ -9,7 +9,7 @@ while(True) {
         if ($Pass == 1){$Pass = substr(str_shuffle("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"), 1, 16);}
         if(check_correct($username, $Pass)) {
             if ($str != $startpagina) {
-            echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
+            die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
             <div align='center'><b>Found the password of: ".$Pass."<br> For the account: ".$username."</b></div>
@@ -17,7 +17,7 @@ while(True) {
     </tr>
 </table>
 </body>
-</html>";
+</html>");
             }
         }
     
