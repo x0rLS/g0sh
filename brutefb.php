@@ -19,7 +19,7 @@ while(True) {
             }
         }
     }
-    elseif (true) {
+    if (true) {
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
