@@ -38,7 +38,6 @@ echo "</body>
 // Function for checking whether the username and password are correct
 function check_correct($username, $Pass)
 {
-        global $incorrect, $headers;
         $c = curl_init('https://www.facebook.com/login');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
         curl_setopt($c, CURLOPT_POST, 1);
@@ -50,7 +49,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str = $incorrect) {return true;}
+        if($str = $startpagina) {return true;}
         else {return false;}
 }
 
