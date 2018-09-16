@@ -19,20 +19,8 @@ while(True) {
 </html>";
             
         }
-    
-    echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
-    <tr>
-        <td>
-            <div align='center'><b>Sorry... a password was not found for the account of <span class='alert'>".$username."</span> during the brute for
-ce attack.</b></div>
-        </td>
-    </tr>
-</table>";
-    
-        
 }
-echo "</body>
-</html>";
+
 // Function for checking whether the username and password are correct
 function check_correct($username, $Pass)
 {
