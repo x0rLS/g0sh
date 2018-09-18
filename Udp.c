@@ -35,13 +35,7 @@ int make_socket(char *host, char *port) {
 		}
 		
 	}
-	if(p == NULL)
-	 {
-		if(servinfo)
-		fprintf(stderr, "#TangoDown!!!!!\n");
-		
-		
-	}
+	
 	if(servinfo)
 		
 	fprintf(stderr, "[Connected -> %s:%s]\n", host, port);
