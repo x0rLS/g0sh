@@ -51,7 +51,7 @@ void broke(int s) {
 
 void attack(char *host, char *port, char *timeEnd, int id) {
 	int sockets[CONNECTIONS];
-	int x, int i, g=1, r;
+	int x, i, g=1, r;
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
