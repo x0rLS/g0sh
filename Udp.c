@@ -30,6 +30,7 @@ int make_socket(char *host, char *port) {
 		}
 		if(connect(sock, p->ai_addr, p->ai_addrlen)==-1) {
 			fprintf(stderr, "Lizarded\n");
+			continue;
 			
 		}
 		
