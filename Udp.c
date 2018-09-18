@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
 	int x;
 	timeEnd = atoi(argv[3]);
 	
-	if(argc !=4)
+	if(argc !=5)
 		cycle_identity();
 	for(x=0; x != THREADS; x++) {
 		if(fork())
