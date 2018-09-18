@@ -17,7 +17,7 @@ int make_socket(char *host, char *port) {
 	int sock, r;
 //	fprintf(stderr, "[Connecting -> %s:%s\n", host, port);
 	memset(&hints, 0, sizeof(hints));
-	hints.ai_family = AF_INET;
+	hints.ai_family = AF_UNSPEC;
 	hints.ai_socktype = SOCK_STREAM;
 	if((r=getaddrinfo(host, port, &hints, &servinfo))!=0) {
 		fprintf(stderr, "getaddrinfo: %s\n", gai_strerror(r));
