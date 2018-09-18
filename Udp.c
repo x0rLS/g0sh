@@ -54,7 +54,7 @@ void broke(int s) {
 #define CONNECTIONS 8
 #define THREADS 48
 
-void attack(char *host, char *port, timeEnd, int id) {
+void attack(char *host, char *port, int timeEnd, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
 	for(x=0; x < CONNECTIONS; x++)
