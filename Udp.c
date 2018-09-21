@@ -42,8 +42,8 @@ int make_socket(char *host, char *port) {
 	return sock;
 	}
 	
-}
-}
+
+
 
 void broke(int s) {
 	// do nothing
