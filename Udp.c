@@ -40,6 +40,7 @@ int make_socket(char *host, char *port) {
 		
 	fprintf(stderr, "[Connected -> %s:%s]\n", host, port);
 	return sock;
+	}
 }
 
 void broke(int s) {
