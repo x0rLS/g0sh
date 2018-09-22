@@ -11,7 +11,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#define buffer 1024
+int buffer = 1024;
 #define PPS 1337133713371337
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
