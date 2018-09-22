@@ -35,7 +35,7 @@ int make_socket(char *host, char *port) {
 		}
 		
 	
-	
+	}
 	if(servinfo)
 		
 	fprintf(stderr, "[Connected -> %s:%s]\n", host, port);
