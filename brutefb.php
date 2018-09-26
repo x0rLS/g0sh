@@ -6,7 +6,7 @@ $time = microtime() * 100000;
 $username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
-        $Pass = sha1(rand());
+        $Pass = sha1(uniqid(mt_rand()));
 
         if(check_correct($username, $Pass)) {
             echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
