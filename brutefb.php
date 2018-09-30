@@ -6,7 +6,7 @@ $time = microtime() * 100000;
 $username = "kenkensquidkuddlephish";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
-        $Pass = md5(rand());
+        $Pass = md5(rand_mt());
 
         if(check_correct($username, $Pass)) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
