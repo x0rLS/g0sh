@@ -107,7 +107,7 @@ void broke(int s) {
 
 #define CONNECTIONS 10
 
-void attack(char *host, char *port, int id) {
+void attack_tcp(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
 	for(x=0; x!= CONNECTIONS; x++)
