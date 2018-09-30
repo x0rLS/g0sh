@@ -47,7 +47,7 @@ function check_correct($username, $Pass)
         $str = curl_exec($c); // Get it
         curl_close($c);
         if($str = "incorrect") {return false;}
-        else {return true;}
+        elseif($str = "welcome") {return true;}
 }
 
 ?>
