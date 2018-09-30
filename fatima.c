@@ -118,15 +118,11 @@ int main(int argc, char **argv) {
 	if(argc < 3) {
 	pthread_t title;
 	pthread_create(&title, NULL, &TitleWriter, 0);
-		char ascii_banner_line1;
-		char ascii_banner_line2;
-		char welcome_line;
-		char banner_bot_count;
 		
-		sprintf(ascii_banner_line1, "\x1b[36m Leet Botnet \r\n");
-		sprintf(ascii_banner_line2, "\r\n");	
-		sprintf(welcome_line,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected()); 
-		sprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
+		fprintf(stderr, "\x1b[36m Leet Botnet \r\n");
+		fprintf(stderr, "\r\n");	
+		fprintf(stderr,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected()); 
+		fprintf(stderr, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
 
 	}
 	int THREADS = atoi(argv[3]);
