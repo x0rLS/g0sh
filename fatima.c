@@ -167,7 +167,7 @@ void echoloader() {
 int main(int argc, char **argv) {
 	int x;
 	int sock;
-	if(argc < 3) {
+	if(argc < 4) {
 	pthread_t title;
 	pthread_create(&title, NULL, &TitleWriter, 0);
 		
