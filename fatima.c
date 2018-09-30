@@ -117,12 +117,11 @@ int main(int argc, char **argv) {
 	int sock;
 	if(argc < 3) {
 	pthread_t title;
-	pthread_create(&title, NULL, &TitleWriter, sock);
-		char ascii_banner_line1 [5000];
-		char ascii_banner_line2 [5000];
-		char welcome_line [80];
-		char banner_bot_count [2048];
-		memset(banner_bot_count, 0, 2048);
+	pthread_create(&title, NULL, &TitleWriter, 0);
+		char ascii_banner_line1;
+		char ascii_banner_line2;
+		char welcome_line;
+		char banner_bot_count;
 		
 		sprintf(ascii_banner_line1, "\x1b[36m Leet Botnet \r\n");
 		sprintf(ascii_banner_line2, "\r\n");	
