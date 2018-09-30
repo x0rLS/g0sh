@@ -46,8 +46,8 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c);
-        if($str = "incorrect") {return false;}
-        elseif($str = "welcome") {return true;}
+        if($str != "incorrect") {return false;}
+        elseif($str != "search") {return true;}
 }
 
 ?>
