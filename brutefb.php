@@ -3,7 +3,7 @@
 global $wrong;
 global $startpagina;
 $time = microtime() * 100000;
-$username = "charlotte.scheurleer1";
+$username = "kenkensquidkuddlephish";
 echo "https://twitter.com/LizardL4nds";
 while(True) {
         $Pass = md5($time);
