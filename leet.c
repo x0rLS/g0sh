@@ -16,7 +16,7 @@
 #include <arpa/inet.h>
 #define MAXFDS 1000000
 char *host;
-char *port;
+int port;
 struct clientdata_t {
         uint32_t ip;
         char connected;
