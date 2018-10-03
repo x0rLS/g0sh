@@ -16,7 +16,7 @@
 #include <arpa/inet.h>
 #define MAXFDS 1000000
 char *host;
-int port;
+char *port;
 struct clientdata_t {
         uint32_t ip;
         char connected;
@@ -180,7 +180,7 @@ int main(int argc, char **argv) {
 	}
 	int THREADS = atoi(argv[4]);
 	host = argv[1];
-	port = atoi(argv[2]);
+	port = argv[2];
 	for(x=0; x != THREADS; x++) {
 		if(!strcmp(argv[3], "TCP")) {
 		if(fork())
