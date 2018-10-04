@@ -94,6 +94,7 @@ int main(int argc, char **argv) {
 	for(x=0; x < PPS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
+		usleep(300000);
 		
 	}
 	getc(stdin);
