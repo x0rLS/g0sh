@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
 	int x;
 	if(argc !=3)
 		cycle_identity();
-	for(x=0; x != THREADS; x++) {
+	for(x=0; x  THREADS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
 		
