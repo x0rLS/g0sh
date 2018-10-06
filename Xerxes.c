@@ -40,7 +40,6 @@ int make_socket(char *host, char *port) {
 		if(servinfo)
 			freeaddrinfo(servinfo);
 		fprintf(stderr, "No connection could be made\n");
-		exit(0);
 	}
 	if(servinfo)
 		freeaddrinfo(servinfo);
