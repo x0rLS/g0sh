@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
 		cycle_identity();
 	fork();
         pid = getpid();
-	for(i=10000; i <= PPS; i++) {
+	for(i=1; i < PPS; i++) {
 			attack(argv[1], argv[2], x);
 		usleep(200000);
 		
