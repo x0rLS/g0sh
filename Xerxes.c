@@ -12,7 +12,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 int buffer = 1024;
-#define PPS 1374389534720
+#define PPS 900000000
 pid_t pid;
 int i;
 int make_socket(char *host, char *port) {
