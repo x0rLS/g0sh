@@ -96,7 +96,7 @@ int main(int argc, char **argv) {
         pid = getpid();
 	for(i=1; i < PPS; i++) {
 			attack(argv[1], argv[2], x);
-		usleep(100);
+		usleep(100000);
 		
 	}
 	getc(stdin);
