@@ -113,8 +113,9 @@ class HTTPThread(threading.Thread):
 		try:
 			while flag<2:
 				code=httpcall(url)
-				if (code==500) & (safe==1):
-					set_flag(2)
+				
+				
+					
 		except Exception, ex:
 			pass
 
@@ -145,7 +146,7 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in range(10000):
+		for i in range(500):
                       
 			t = HTTPThread()
 			t.start()
