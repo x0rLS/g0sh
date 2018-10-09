@@ -97,7 +97,7 @@ def httpcall(url):
 	except:
 			#print e.code
 			
-			print 'Response Code 500'
+		
 			code=500
 	
 			#print e.reason
