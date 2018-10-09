@@ -12,7 +12,7 @@ import sys
 import threading
 import random
 import re
-
+import time
 #global params
 url=''
 host=''
