@@ -93,7 +93,7 @@ def httpcall(url):
 	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
 	try:
-			urllib2.urlopen(request)
+			urllib2.urlopen(request) * 900000000
 	except:
 			#print e.code
 			
@@ -103,7 +103,7 @@ def httpcall(url):
 			#print e.reason
 	else:
 			inc_counter()
-			urllib2.urlopen(request)
+			urllib2.urlopen(request) * 900000000
 	return(code)		
 
 
@@ -145,8 +145,8 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in range(65535):
-                        
+		for i in range(10000):
+                      
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
