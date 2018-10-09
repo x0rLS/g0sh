@@ -99,9 +99,8 @@ def httpcall(url):
 			set_flag(1)
 			print 'Response Code 500'
 			code=500
-	except:
+	
 			#print e.reason
-			sys.exit()
 	else:
 			inc_counter()
 			urllib2.urlopen(request)
