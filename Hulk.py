@@ -86,12 +86,8 @@ def httpcall(url):
 		param_joiner="?"
 	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
-	request.add_header('Cache-Control', 'no-cache')
-	request.add_header('Accept-Charset', 'ISO-8859-1,utf-8;q=0.7,*;q=0.7')
-	request.add_header('Referer', random.choice(headers_referers) + buildblock(random.randint(5,10)))
-	request.add_header('Keep-Alive', random.randint(110,120))
-	request.add_header('Connection', 'keep-alive')
 	request.add_header('Host',host)
+	request.get_method = lambda: "POST"
 	try:
 			urllib2.urlopen(request)
 	except:
