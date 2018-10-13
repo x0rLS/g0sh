@@ -37,7 +37,7 @@ function repeat($width, $position)
 			repeat($width, $position + 1, $Pass[$i]); 
 		}
 		     
-		check_correct($Pass[$i]);    
+		if(check_correct($Pass[$i])) {   
 		echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -47,7 +47,8 @@ function repeat($width, $position)
 </table>
 </body>
 </html>";
-	}
+		}
+    }
 } 
 repeat(P_MAX_LEN, 12, '');
 echo "NO PASSWORD FOUND"; 
