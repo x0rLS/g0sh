@@ -9,6 +9,7 @@ $Pass = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*'
 $c_len = strlen($Pass); 
 $min = 1;
 $max = 12;
+$brute = echo "Bruting...";
 function bruteForce($min, $max, $Pass)
 {
 while(True)
@@ -30,9 +31,10 @@ while(True)
 	{        
 		if ($min < $max - 1) 
 		{    
-			bruteForce($min, $max + 1, $Pass[$i]); 		     
-			if($str > "What's on your mind?") {echo "Password:".$Pass[$i]."";}
-                        else {echo "Bruting...";}
+			bruteForce($min, $max + 1, $Pass[$i]); 	
+			$good = echo "Found:".$Pass[$i]."";
+			if($str > "What's on your mind?") {return $good;}
+                        else {return $brute;}
 		}
         }
 }
