@@ -148,5 +148,5 @@ else:
 			t.start()
 		t = MonitorThread()
 		t.start()
-		time.sleep(0.01)
+		time.sleep(0.1)
  
