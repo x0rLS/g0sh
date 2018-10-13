@@ -37,4 +37,5 @@ while(True)
         }
 }
 } 
+bruteForce($min, $max, '');
 ?>
