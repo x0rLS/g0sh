@@ -66,5 +66,6 @@ function check_correct($Pass)
         if($str != "What's on your mind?") {return true;}
         else {return false;}
 }
+repeat(P_MAX_LEN, 12, ''); 
 
 ?>
