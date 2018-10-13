@@ -34,10 +34,10 @@ function repeat($width, $position)
 	{        
 		if ($position  < $width - 1) 
 		{    
-			repeat($width, $position + 1, $c_set); 
+			repeat($width, $position + 1, $Pass[$i]); 
 		}
 		     
-		check_correct($c_set);    
+		check_correct($Pass[$i]);    
 	}
 } 
 
@@ -51,10 +51,10 @@ if(check_correct($Pass)) {
 </table>
 </body>
 </html>";
-
-}
           
 repeat(P_MAX_LEN, 12, '');
 echo "NO PASSWORD FOUND"; 
+	
+}
 
 ?>
