@@ -31,7 +31,7 @@ while(True)
 		if ($min < $max - 1) 
 		{    
 			bruteForce($min, $max + 1, $Pass[$i]); 	
-			if($str > "What's on your mind?") {return $Pass[$i];}
+			if($str != "What's on your mind?") {return $Pass[$i];}
                         else {return False;}
 		}
         }
