@@ -93,7 +93,7 @@ def httpcall(url):
 	try:
 			urllib2.urlopen(request)
 			s.connect((host,80))
-	except:
+	except socket.error as e:
 			#print e.code
 			
 		
@@ -145,11 +145,11 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in range(99999):
+		for i in xrange(900000000):
                         
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
 		t.start()
-		time.sleep(0.1)
+		time.sleep(.1)
  
