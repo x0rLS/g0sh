@@ -93,7 +93,7 @@ def httpcall(url):
 	try:
 			urllib2.urlopen(request)
 			s.connect((host,80))
-	except socket.error:
+	except:
 			#print e.code
 			
 		
