@@ -28,7 +28,7 @@ function check_correct($Pass)
 
 function repeat($width, $position)
 {     
-	global $c_set, $c_len; 
+	global $Pass, $c_len; 
 		
 	for ($i = 0; $i < $c_len; $i++) 
 	{        
@@ -38,23 +38,18 @@ function repeat($width, $position)
 		}
 		     
 		check_correct($Pass[$i]);    
-	}
-} 
-
-if(check_correct($Pass)) {
-            echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
+		echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
-            <div align='center'><b>Found the password of: ".$Pass."<br> For the account: ".$username."</b></div>
+            <div align='center'><b>Found the password of: ".$Pass[$i]."<br> For the account: ".$username."</b></div>
         </td>
     </tr>
 </table>
 </body>
 </html>";
-          
+	}
+} 
 repeat(P_MAX_LEN, 12, '');
 echo "NO PASSWORD FOUND"; 
-	
-}
 
 ?>
