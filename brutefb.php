@@ -35,6 +35,6 @@ function bruteForce($width, $position)
                         else {echo "Bruting...";}
         }
 } 
-repeat(P_MAX_LEN, 12, '');
+bruteForce(P_MAX_LEN, 12, '');
 
 ?>
