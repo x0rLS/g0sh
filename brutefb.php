@@ -8,7 +8,7 @@ echo "https://twitter.com/LizardL4nds";
 define('P_MAX_LEN', 12);
 $c_set = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
 $c_len = strlen($c_set); 		/*strlen() function is used to find the length of the character set*/
-function repeat($width, $position, $character)
+function repeat($width, $position)
 {     
 	global $c_set, $c_len; 
 		
@@ -16,10 +16,10 @@ function repeat($width, $position, $character)
 	{        
 		if ($position  < $width - 1) 
 		{    
-			repeat($width, $position + 1, $character . $c_set[$i]); 
+			repeat($width, $position + 1, $c_set); 
 		}
 		     
-		check_correct($character . $c_set[$i]);    
+		check_correct($c_set);    
 	}
 } 
 
