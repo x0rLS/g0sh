@@ -37,5 +37,5 @@ while(True)
         }
 }
 } 
-bruteForce($min, $max, '');
+bruteForce($min, $max, $Pass);
 ?>
