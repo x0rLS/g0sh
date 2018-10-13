@@ -142,11 +142,11 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in xrange(999999999):
+		for i in range(65535):
                         
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
 		t.start()
-		time.sleep(0.1)
+		time.sleep(0.01)
  
