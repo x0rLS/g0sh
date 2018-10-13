@@ -7,7 +7,7 @@ $username = "kenkensquidkuddlephish";
 echo "https://twitter.com/LizardL4nds";
 $Pass = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
 $c_len = strlen($Pass); 
-$min = 1;
+$min = 0;
 $max = 12;
 function bruteForce($min, $max, $Pass)
 {     
@@ -29,7 +29,7 @@ function bruteForce($min, $max, $Pass)
 		if ($min < $max - 1) 
 		{    
 			bruteForce($min, $max + 1, $Pass[$i]); 		     
-			if($str != "What's on your mind?") {echo "Password:".$Pass[$i]."";}
+			if($str > "What's on your mind?") {echo "Password:".$Pass[$i]."";}
                         else {echo "Bruting...";}
 		}
         }
