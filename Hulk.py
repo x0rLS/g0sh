@@ -89,10 +89,8 @@ def httpcall(url):
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
 	request.get_method = lambda: "POST"
-	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	try:
 			urllib2.urlopen(request)
-			s.connect((host,80))
 	except socket.error as e:
 			#print e.code
 			
