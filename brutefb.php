@@ -25,7 +25,7 @@ while(True)
         }
 }
 } 
-funtion check_correct($Pass)
+function check_correct($Pass)
 {
 	$c = curl_init('https://www.facebook.com/login');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
