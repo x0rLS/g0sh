@@ -109,12 +109,16 @@ class HTTPThread(threading.Thread):
 	def run(self):
 		try:
 			while True:
-				code=httpcall(url) * 200000
+				bytes += 65535
+				for i in range(bytes):
+					bytes += 65535
+					code=httpcall(url)
+					print "Rps: %d" % bytes
+					
 				
 				
 					
-		except socket.error:
-			print "Server Down..."
+		except:
 			pass
 
 # monitors http threads and counts requests
