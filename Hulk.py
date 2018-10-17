@@ -127,8 +127,7 @@ class MonitorThread(threading.Thread):
 		while True:
 			
 
-			print "Rps: %d" % bytes
-			bytes += 65535
+			print "Rps: %d" % bytes++
 
 #execute 
 if len(sys.argv) < 2:
