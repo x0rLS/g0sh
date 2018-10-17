@@ -126,7 +126,6 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while True:
-			bytes += 65535
 
 			print "Rps: %d" % bytes
 
