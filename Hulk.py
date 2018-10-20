@@ -22,9 +22,6 @@ headers_referers=[]
 request_counter=0
 flag=0
 safe=0
-F = open('C:\Users\laris\OneDrive\Bureaublad\proxy.txt')
-ips = F.read().split('\n')
-F.close()
 def inc_counter():
 	global request_counter
 	request_counter+=1
