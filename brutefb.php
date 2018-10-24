@@ -33,7 +33,7 @@ function check_correct($Pass)
         $str = curl_exec($c); // Get it
         curl_close($c); 
 	if($str != "Startpagina") {return true;}
-        else {return ;}
+        else {return false;}
 }
 bruteForce($Pass);
 echo "NO PASSWORD FOUND"; 
