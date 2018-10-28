@@ -120,7 +120,7 @@ class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
 		while flag==0:
-			if (previous+100000<request_counter) & (previous<>request_counter):
+			if (previous+100<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
 		if flag==2:
@@ -144,7 +144,7 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in range(900):
+		for i in range(900000):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
