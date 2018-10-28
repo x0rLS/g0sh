@@ -83,7 +83,7 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-		conn = httplib.HTTPSConnection("https://www.google.com")
+		conn = httplib.HTTPSConnection("www.google.com", 443)
 	
 	try:
 		for i in range(900000):
