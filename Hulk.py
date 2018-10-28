@@ -88,7 +88,6 @@ def httpcall(url):
         urllib2.install_opener(opener)
 	
 	try:
-		for i in range(900000):
 		
 			urllib2.urlopen(request)
 	except socket.error as e:
@@ -147,4 +146,6 @@ else:
 			t.start()
 		t = MonitorThread()
 		t.start()
+		time.sleep(.01)
+		
  
