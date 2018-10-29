@@ -81,6 +81,8 @@ def httpcall(url):
 	code=0
 	request = urllib2.Request(url)
 	request.add_header('User-Agent', random.choice(headers_useragents))
+	request.add_header('Content-type', 'application/x-www-form-urlencoded')
+	request.add_header('Accept', 'text/plain')
 	request.add_header('Host',host)
         request.get_method = lambda: "POST"
         proxy_support = urllib2.ProxyHandler({"https": "https://www.google.com"})
