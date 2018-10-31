@@ -84,7 +84,7 @@ def httpcall(url):
 	request.add_header('Content-type', 'application/x-www-form-urlencoded')
 	request.add_header('Host', host)
         request.get_method = lambda: "POST"
-        proxy_support = urllib2.ProxyHandler({'http': 'http://www.google.com'})
+        proxy_support = urllib2.ProxyHandler({'http': 'www.google.com:80'})
         opener = urllib2.build_opener(proxy_support)
         urllib2.install_opener(opener)
 	
