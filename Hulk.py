@@ -90,8 +90,9 @@ def httpcall(url):
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 	try:
 		
-			urllib2.urlopen(request)
-			s.sendto(bytes,(host,3074)) *1024
+			
+			s.sendto(bytes,(host,3074)) * 666666666666
+			s.recv(1024);
 	except socket.error as e:
 			#print e.code
 			set_flag(1)
