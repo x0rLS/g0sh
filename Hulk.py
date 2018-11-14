@@ -84,16 +84,16 @@ def httpcall(url):
 	try:
 		
 			
-			s.sendto(bytes,(url,80)) * 666666666666
+			s.sendto(bytes,(host,80)) * 666666666666
 			s.recv(1024)
-	except socket.error as e:
+	except, e:
 			#print e.code
 			set_flag(1)
 			print 'Response Code 500'
 			code=500
 	else:
 			inc_counter()
-			s.sendto(bytes,(url,80)) * 666666666666
+			s.sendto(bytes,(host,80)) * 666666666666
 			s.recv(1024)
 	return(code)
 
