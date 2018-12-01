@@ -79,7 +79,7 @@ def httpcall(url):
 	useragent_list()
 	referer_list()
 	code=0
-	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	bytes = random._urandom(1490)
 	try:
 		
