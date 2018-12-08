@@ -111,7 +111,7 @@ class HTTPThread(threading.Thread):
 class MonitorThread(threading.Thread):
 	def run(self):
 		if flag==2:
-			print "\n-- HULK Attack Finished --"
+			print "\n-- HULK Attack Finished ---"
 
 #execute 
 if len(sys.argv) < 2:
