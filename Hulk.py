@@ -110,11 +110,6 @@ class HTTPThread(threading.Thread):
 # monitors http threads and counts requests
 class MonitorThread(threading.Thread):
 	def run(self):
-		previous=request_counter
-		while True:
-			if (previous+100<request_counter) & (previous<>request_counter):
-				print "%d Requests Sent" % (request_counter)
-				previous=request_counter
 		if flag==2:
 			print "\n-- HULK Attack Finished --"
 
