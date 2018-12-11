@@ -88,7 +88,7 @@ def httpcall(url):
 			
 	except:
 			#print e.code
-			print 'Ryan pwned ur server'
+			print 'Ryan pwned ur server!'
 			code=500
 
 	
