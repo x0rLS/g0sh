@@ -89,7 +89,7 @@ def httpcall(url):
 		
 			
 			
-	except Exception:
+	except code == "500":
 			#print e.code
 			print 'Satan Pwned Ur Server!'
 			code=500
