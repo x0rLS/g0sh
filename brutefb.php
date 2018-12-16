@@ -18,6 +18,7 @@ while(True)
 
 	check_correct($Pass);  
 	echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass."\r\n";
+     }
 }
 function check_correct($Pass)
 {
