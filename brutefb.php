@@ -16,9 +16,10 @@ while(True)
 {     
 	$Pass = md5(rand(0,$c_len));
 
-	check_correct($Pass);  
+	check_correct($Pass) {
 	echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass."\r\n";
      }
+   }
 }
 function check_correct($Pass)
 {
