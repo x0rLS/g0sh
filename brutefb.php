@@ -14,7 +14,7 @@ function bruteForce($Pass)
 {
 while(True)
 {     
-	$Pass = md5(rand(0,$c_len));
+	$Pass = strtoupper(md5(rand(0, 1000000)));
 
 	check_correct($Pass) {
 	echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass."\r\n";
