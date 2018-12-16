@@ -17,7 +17,7 @@ while(True)
 	$Pass = strtoupper(md5(rand(0, 1000000)));
 
 	check_correct($Pass) {
-	echo '<br/><br/>'.'FOUND MATCH, password: '.$Pass."\r\n";
+	echo('FOUND MATCH, password: '.$Pass.'');
      }
    }
 }
