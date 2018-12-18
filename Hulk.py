@@ -93,9 +93,8 @@ def httpcall(url):
 		
 			
 			
-	except Exception:
-			s.connect((url,80))
-			s.sendall("Tango Down" * 109951162777600)
+	except socket.error:
+						
 			print "Lizarded"
 
 	
