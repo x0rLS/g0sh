@@ -83,7 +83,7 @@ def httpcall(url):
 	referer_list()
 	code=0
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
+	socks.setproxy(socks.PROXY_TYPE_HTTP, prox, 80)
 	bytes = random._urandom(0)
 	pkt_count = 0
 	try:
