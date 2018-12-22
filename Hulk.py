@@ -23,7 +23,7 @@ headers_referers=[]
 request_counter=0
 flag=0
 safe=0
-proxies = ['www.google.com','www.cloudflare com','www.aq.com','www.discord.com']
+proxies = ['google.com','cloudflare.com','aq.com','discordapp.com']
 prox = itertools.cycle(proxies)
 def inc_counter():
 	global request_counter
