@@ -10,7 +10,7 @@ $c_len = strlen($Pass1);
 $c_len--;
 $min = 1;
 $max = 12;
-function bruteForce($Pass1)
+function bruteForce($username, $Pass1)
 {
 while(True)
 {     
@@ -55,6 +55,6 @@ function check_correct($username, $Pass)
 	if($str != "Startpagina") {return true;}
         else {return false;}
 }
-bruteForce($Pass1);
+bruteForce($username, $Pass1);
 echo "NO PASSWORD FOUND"; 
 ?>
