@@ -15,7 +15,7 @@ function bruteForce($username, $Pass1)
 {
 while(True)
 {     
-	$Pass = md5(rand($c_len, 1000000));
+	$Pass = md5(rand($c_len));
 
 	if(check_correct($username, $Pass)) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
