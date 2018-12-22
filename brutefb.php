@@ -14,13 +14,13 @@ function bruteForce($Pass1)
 {
 while(True)
 {     
-	$Pass = md5(rand(0, $c_len));
+	$Pass = md5(rand(0, $Pass1));
 
 	if(check_correct($username, $Pass)) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
-            <div align='center'><b>Found the password of: ".$Dictionary[$Position]."<br> For the account: ".$username."</b></div>
+            <div align='center'><b>Found the password of: ".$Pass."<br> For the account: ".$username."</b></div>
         </td>
     </tr>
 </table>
