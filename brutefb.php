@@ -3,7 +3,7 @@
 global $wrong;
 global $startpagina;
 $time = microtime() * 100000;
-$username = "charlotte.scheurleer1";
+$username = "0681244126";
 echo "https://twitter.com/LizardL4nds";
 $Pass1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
 $c_len = strlen($Pass1); 
