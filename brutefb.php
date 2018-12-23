@@ -1,16 +1,8 @@
 <?php
-
-global $wrong;
-global $startpagina;
 $time = microtime() * 100000;
-$username = "0681244126";
+$username = "USERNAMEHERE";
 echo "https://twitter.com/LizardL4nds";
-$Pass1 = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890!@#$%&*';          /*character set which is used to brute force the password*/
-$c_len = strlen($Pass1); 
-$c_len--;
-$min = 1;
-$max = 12;
-function bruteForce($username, $Pass1)
+function bruteForce($username, $Pass)
 {
 while(True)
 {     
