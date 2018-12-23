@@ -12,7 +12,6 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
-#include "config.h"
 
 extern int attacks = 0;
 #define PPS 150000000
