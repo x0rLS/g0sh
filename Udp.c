@@ -12,6 +12,7 @@
 
 #define PPS 150000000
 int limiter;
+int pps;
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
@@ -77,6 +78,7 @@ void attack(char *host, char *port, int id) {
 		}
 		
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
+		pps++;
 		if(i >= limiter)
 		{
 			i=0;
@@ -100,7 +102,7 @@ void cycle_identity() {
 }
 
 int main(int argc, char **argv) {
-	int x;
+	int x,i;
 	
 	
 	if(argc !=4)
