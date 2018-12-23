@@ -52,7 +52,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "Startpagina") {return true;}
+	if($str != "Error") {return true;}
         else {return false;}
 }
 bruteForce($username, $Pass1);
