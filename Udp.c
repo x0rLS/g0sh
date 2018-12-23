@@ -13,6 +13,7 @@
 #define PPS 150000000
 int limiter;
 int pps;
+int sleeptime = 100;
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
