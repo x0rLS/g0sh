@@ -62,7 +62,7 @@ void broke(int s) {
 	// do nothing
 }
 
-#define CONNECTIONS 40
+#define CONNECTIONS 800000
 #define THREADS 60
 
 /*
