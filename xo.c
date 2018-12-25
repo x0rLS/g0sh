@@ -13,7 +13,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
-extern int attacks = 0;
+int attacks = 0;
 #define PPS 150000000
 int i = 0;
 
