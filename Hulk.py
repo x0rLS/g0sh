@@ -118,9 +118,11 @@ else:
 				set_safe()
 				
 		url = sys.argv[1]
-		
-		for i in range(666):
+		rthreads = []
+	
+		for i in range(256):
 			t = HTTPThread()
+			rthreads.append(t)
 			t.start()
 		
  
