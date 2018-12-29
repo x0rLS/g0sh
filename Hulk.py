@@ -119,7 +119,7 @@ else:
 				
 		url = sys.argv[1]
 		
-		for i in range(6666666):
+		for i in range(666):
 			t = HTTPThread()
 			t.start()
 		
