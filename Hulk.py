@@ -94,7 +94,7 @@ def httpcall(url):
 	pkt_count = 0
 	try:
 			s.connect((url,443))
-			s.send("POST / HTTP/1.1\r\nHost: %s\r\nUser-Agent: R000T Skid\r\n\r\n" % url)			
+			s.send("Satan-Bot")			
 	except socket.error as e:						
 			print "b/ps: %s" % bps
 
