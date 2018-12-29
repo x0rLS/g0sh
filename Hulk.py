@@ -100,12 +100,9 @@ def httpcall(url):
 #http caller thread 
 class HTTPThread(threading.Thread):
 	def run(self):
-		try:
 			while True:
 				httpcall(url)				
 					
-		except:
-			pass
 		
 if len(sys.argv) < 2:
 	usage()
