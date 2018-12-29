@@ -11,8 +11,7 @@ $c_len = strlen($Pass1);
 $c_len--;
 $min = 1;
 $max = 12;
-function bruteForce($username, $Pass1)
-{
+
 while(True)
 {     
 	$Pass = crypt(rand(6, $c_len));
@@ -27,7 +26,7 @@ while(True)
 </table>
 </body>
 </html>");
-    }
+ 
 }
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
