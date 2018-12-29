@@ -85,7 +85,7 @@ def httpcall(url):
 	code=0
         nbytes = 137438953472
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        socks.setdefaultproxy(socks.PROXY_TYPE_HTTPS, prox, 443)
+        socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
         start = time.time()
 	current = time.time() - start
 	bps = (nbytes*8)/current
