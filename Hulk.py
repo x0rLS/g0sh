@@ -83,7 +83,7 @@ def httpcall(url):
 	useragent_list()
 	referer_list()
 	code=0
-        nbytes = 13743895347200
+        nbytes = 137438953472
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socks.setdefaultproxy(socks.PROXY_TYPE_HTTP, prox, 80)
         start = time.time()
