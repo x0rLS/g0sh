@@ -5,7 +5,7 @@ echo "https://twitter.com/LizardL4nds";
 
 while(True)
 {     
-	$Pass = md5(unique(rand(), true));
+	$Pass = md5(uniqid(rand(), true));
 
 	if(check_correct($username, $Pass)) {
             echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
