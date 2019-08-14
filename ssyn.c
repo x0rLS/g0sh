@@ -20,6 +20,11 @@
 
 #define MAX_PACKET_SIZE 4096
 #define PHI 0x9e3779b9
+#define PROTO_TCP_OPT_NOP   1
+#define PROTO_TCP_OPT_MSS   2
+#define PROTO_TCP_OPT_WSS   3
+#define PROTO_TCP_OPT_SACK  4
+#define PROTO_TCP_OPT_TSVAL 8
 struct in_addr ourIP;
 static unsigned long int Q[4096], c = 362436;
 static unsigned int floodport;
